@@ -92,27 +92,38 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
+function getcookie(c_name){
+  var c_value = document.cookie;
+  var c_start = c_value.indexOf(" " + c_name + "=");
+  if(c_start == -1){
+    c_start = c_value.indexOf(c_name + "=");
+  }
+  if(c_start == -1){
+    c_value = null;
+  }else{
+    c_start = c_value.indexOf("=", c_start) + 1;
+    var c_end = c_value.indexOf(";", c_start);
+    if(c_end == -1){
+      c_end = c_value.length;
+    }
+    c_value = unescape(c_value.substring(c_start, c_end));
+    }
+  return c_value;
+}
+
+function setcookie(c_name, c_value){
+  var expiredate = new Date();
+  expiredate.setDate(expiredate.getDate() + 7);
+  document.cookie = c_name+'='+c_value+'; expires=' +expiredate+ '; path=/';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
     // Put the image URL in Google search.
-    renderStatus('Performing Google Image search for ' + url);
+    console.log(url);
+    renderStatus('Your at:' + url);
+    setcookie("url-read", 0);
+    // renderStatus('cookie state:' + getcookie('url-read'));
 
-    getImageUrl(url, function(imageUrl, width, height) {
-
-      renderStatus('Search term: ' + url + '\n' +
-          'Google image search result: ' + imageUrl);
-      var imageResult = document.getElementById('image-result');
-      // Explicitly set the width/height to minimize the number of reflows. For
-      // a single image, this does not matter, but if you're going to embed
-      // multiple external images in your page, then the absence of width/height
-      // attributes causes the popup to resize multiple times.
-      imageResult.width = width;
-      imageResult.height = height;
-      imageResult.src = imageUrl;
-      imageResult.hidden = false;
-
-    }, function(errorMessage) {
-      renderStatus('Cannot display image. ' + errorMessage);
-    });
   });
 });

@@ -117,13 +117,41 @@ function setcookie(c_name, c_value){
   document.cookie = c_name+'='+c_value+'; expires=' +expiredate+ '; path=/';
 }
 
+function deleteCookie(url,name,store, callback){
+	console.log("Delete URL: "+url+" | NAME: "+name+" |");
+	chrome.cookies.remove({
+		'url':url,
+		'name':name,
+		'storeId':store
+	}, function(details) {
+		if(typeof callback === "undefined")
+			return;
+		if(details=="null" || details===undefined || details==="undefined") {
+			callback(false);
+		} else {
+			callback(true);
+		}
+	})
+}
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
     // Put the image URL in Google search.
     console.log(url);
     renderStatus('Your at:' + url);
-    setcookie("url-read", 0);
-    // renderStatus('cookie state:' + getcookie('url-read'));
+
+    // var newCookie = $("#newCookie");
+    // var domain 		=  $(".domain",		newCookie ).val();
+    // var hostOnly 	=  $(".hostOnly",	newCookie ).prop("checked");
+    // var expiration	=  $(".expiration", newCookie).scroller('getDate');
+    // var expirationDate = (expiration != null) ? expiration.getTime() / 1000.0 : (new Date().getTime()) / 1000.0;
+    newCookie = {};
+    newCookie.url = url;
+    newCookie.name = "read-percent";
+    newCookie.value = '100';
+    newCookie.path = "/"
+
+    // deleteCookie(newCookie.url, newCookie.name, newCookie.storeId);
+    chrome.cookies.set(newCookie);
 
   });
 });

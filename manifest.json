@@ -1,16 +1,28 @@
 {
-  "manifest_version": 2,
 
   "name": "Wiki Read it",
   "description": "This extension keeps track of what pages you have read online",
   "version": "0.1",
+	"manifest_version": 2,
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+		"default_title": "Wiki Read"
   },
+
+	"background": {
+		"scripts" : ["/lib/jquery-2.0.3.min.js", "/lib/object-watch.js", "/js/cookie_helpers.js", "/js/utils.js", "/js/data.js", "/js/background.js", "/devtools/background-devtools.js", "/js/ga.js"]
+	},
+
   "permissions": [
     "activeTab",
-    "https://ajax.googleapis.com/"
+		"\u003Call_urls\u003E",
+		"contextMenus",
+		"notifications",
+    "tabs",
+    "cookies",
+    "unlimitedStorage",
+    "storage"
   ]
 }

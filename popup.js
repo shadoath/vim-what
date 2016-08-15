@@ -47,46 +47,6 @@ function getCurrentTabUrl(callback) {
   // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
-/**
- * @param {string} searchTerm - Search term for Google Image search.
- * @param {function(string,number,number)} callback - Called when an image has
- *   been found. The callback gets the URL, width and height of the image.
- * @param {function(string)} errorCallback - Called when the image is not found.
- *   The callback gets a string that describes the failure reason.
- */
-function getImageUrl(searchTerm, callback, errorCallback) {
-  // Google image search - 100 searches per day.
-  // https://developers.google.com/image-search/
-  var searchUrl = 'https://ajax.googleapis.com/ajax/services/search/images' +
-    '?v=1.0&q=' + encodeURIComponent(searchTerm);
-  var x = new XMLHttpRequest();
-  x.open('GET', searchUrl);
-  // The Google image search API responds with JSON, so let Chrome parse it.
-  x.responseType = 'json';
-  x.onload = function() {
-    // Parse and process the response from Google Image Search.
-    var response = x.response;
-    if (!response || !response.responseData || !response.responseData.results ||
-        response.responseData.results.length === 0) {
-      errorCallback('No response from Google Image search!');
-      return;
-    }
-    var firstResult = response.responseData.results[0];
-    // Take the thumbnail instead of the full image to get an approximately
-    // consistent image size.
-    var imageUrl = firstResult.tbUrl;
-    var width = parseInt(firstResult.tbWidth);
-    var height = parseInt(firstResult.tbHeight);
-    console.assert(
-        typeof imageUrl == 'string' && !isNaN(width) && !isNaN(height),
-        'Unexpected respose from the Google Image Search API!');
-    callback(imageUrl, width, height);
-  };
-  x.onerror = function() {
-    errorCallback('Network error.');
-  };
-  x.send();
-}
 
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
@@ -111,27 +71,32 @@ function getcookie(c_name){
   return c_value;
 }
 
-function setcookie(c_name, c_value){
-  var expiredate = new Date();
-  expiredate.setDate(expiredate.getDate() + 7);
-  document.cookie = c_name+'='+c_value+'; expires=' +expiredate+ '; path=/';
+function saveToStorage(name, data) {
+  // Get a value saved in a form.
+  // Check that there's some code there.
+  if (!data) {
+    renderStatus('Error: No data specified');
+    return;
+  }
+  // Save it using the Chrome extension storage API.
+  chrome.storage.sync.set({name, data}, function() {
+    // Notify that we saved.
+    renderStatus(name + ' data saved');
+  });
 }
 
-function deleteCookie(url,name,store, callback){
-	console.log("Delete URL: "+url+" | NAME: "+name+" |");
-	chrome.cookies.remove({
-		'url':url,
-		'name':name,
-		'storeId':store
-	}, function(details) {
-		if(typeof callback === "undefined")
-			return;
-		if(details=="null" || details===undefined || details==="undefined") {
-			callback(false);
-		} else {
-			callback(true);
-		}
-	})
+function loadFromStorage(name) {
+  // Get a value saved in a form.
+  // Check that there's some code there.
+  if (!name) {
+    renderStatus('Error: No name specified');
+    return;
+  }
+  // Save it using the Chrome extension storage API.
+  chrome.storage.sync.set({name, data}, function() {
+    // Notify that we saved.
+    renderStatus(name + ' data saved');
+  });
 }
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
@@ -139,19 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(url);
     renderStatus('Your at:' + url);
 
-    // var newCookie = $("#newCookie");
-    // var domain 		=  $(".domain",		newCookie ).val();
-    // var hostOnly 	=  $(".hostOnly",	newCookie ).prop("checked");
-    // var expiration	=  $(".expiration", newCookie).scroller('getDate');
-    // var expirationDate = (expiration != null) ? expiration.getTime() / 1000.0 : (new Date().getTime()) / 1000.0;
-    newCookie = {};
-    newCookie.url = url;
-    newCookie.name = "read-percent";
-    newCookie.value = '100';
-    newCookie.path = "/"
-
-    // deleteCookie(newCookie.url, newCookie.name, newCookie.storeId);
-    chrome.cookies.set(newCookie);
+    saveToStorage(url, '100');
 
   });
 });

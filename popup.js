@@ -32,7 +32,6 @@ function getCurrentTabUrl(callback) {
     // If you want to see the URL of other tabs (e.g. after removing active:true
     // from |queryInfo|), then the "tabs" permission is required to see their
     // "url" properties.
-    console.assert(typeof url == 'string', 'tab.url should be a string');
 
     callback(url);
   });
@@ -50,6 +49,9 @@ function getCurrentTabUrl(callback) {
 
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
+}
+function updateReaderLevel(statusText) {
+  document.getElementById('read_status').textContent = statusText;
 }
 
 function getcookie(c_name){
@@ -71,18 +73,22 @@ function getcookie(c_name){
   return c_value;
 }
 
-function saveToStorage(name, data) {
+function saveToStorage(data) {
   // Get a value saved in a form.
   // Check that there's some code there.
   if (!data) {
     renderStatus('Error: No data specified');
+    updateReaderLevel('??');
     return;
   }
-  // Save it using the Chrome extension storage API.
-  chrome.storage.sync.set({name, data}, function() {
-    // Notify that we saved.
-    renderStatus(name + ' data saved');
+  getCurrentTabUrl(function(url){
+    // Save it using the Chrome extension storage API.
+    chrome.storage.sync.set({url, data}, function() {
+      // Notify that we saved.
+      renderStatus(url + ' data saved');
+    });
   });
+
 }
 
 function loadFromStorage(name) {
@@ -90,21 +96,40 @@ function loadFromStorage(name) {
   // Check that there's some code there.
   if (!name) {
     renderStatus('Error: No name specified');
+    updateReaderLevel('Not found!');
     return;
   }
   // Save it using the Chrome extension storage API.
-  chrome.storage.sync.set({name, data}, function() {
+  chrome.storage.sync.get(name, function(data) {
     // Notify that we saved.
-    renderStatus(name + ' data saved');
+    renderStatus('Loaded '+ name);
+    console.log(data);
+    updateReaderLevel(data + '%');
   });
 }
 document.addEventListener('DOMContentLoaded', function() {
-  getCurrentTabUrl(function(url) {
+  getCurrentTabUrl(function(url){
+
     // Put the image URL in Google search.
     console.log(url);
-    renderStatus('Your at:' + url);
+    renderStatus('You are at:' + url);
+    loadFromStorage(url);
 
-    saveToStorage(url, '100');
+    // saveToStorage('100');
+    // updateReaderLevel('100%');
 
   });
+});
+$("#saveReadLevel:first-child").unbind().click(function(){
+
+  var reader_value = $('#reader_range')[0].value
+
+  console.log(reader_value);
+  saveToStorage(reader_value);
+  // updateReaderLevel(reader_value + '%');
+  console.log('MONEY');
+});
+
+$("#reader_range:first-child").unbind().click(function(){
+  updateReaderLevel($('#reader_range')[0].value + '%');
 });

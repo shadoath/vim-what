@@ -17,25 +17,35 @@
         /* avoid an excessively wide status text */
         white-space: pre;
         text-overflow: ellipsis;
-        overflow: hidden;
+        <!-- overflow: hidden; -->
         max-width: 400px;
       }
     </style>
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
+		<script type="text/javascript" src="/lib/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/lib/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
+    <a id="addReadLevel" i18n_title="addReadLevel">
+      <i class="fa fa-plus"></i>
+      <span i18n="addReadLevel"></span>
+    </a>
+    <a id="reduceReadLevel" i18n_title="reduceReadLevel">
+      <i class="fa fa-minus"></i>
+      <span i18n="reduceReadLevel"></span>
+    </a>
+    <a id="editReadLevel" i18n_title="editReadLevel">
+      <i class="fa fa-pencil-square-o"></i>
+      <span i18n="editReadLevel"></span>
+    </a>
+    <a id="saveReadLevel" i18n_title="saveReadLevel">
+      <i class="fa fa-floppy-o"></i>
+      <span i18n="saveReadLevel"></span>
+    </a>
+    <input id="reader_range" type="range">
     <div id="status"></div>
-					<a id="addCookieButton" i18n_title="addNew">
-						<i class="fa fa-plus"></i>
-						<span i18n="addNew"></span>
-					</a>
+    <div id="read_status"></div>
   </body>
 </html>
 

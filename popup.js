@@ -86,6 +86,7 @@ function saveToStorage(data) {
     chrome.storage.sync.set({url, data}, function() {
       // Notify that we saved.
       renderStatus(url + ' data saved');
+      updateReaderLevel(data + '%');
     });
   });
 
@@ -103,13 +104,13 @@ function loadFromStorage(name) {
   chrome.storage.sync.get(name, function(data) {
     // Notify that we saved.
     renderStatus('Loaded '+ name);
-    console.log(data);
-    updateReaderLevel(data + '%');
+    console.log(JSON.stringify(data));
+    updateReaderLevel(data[name] + '%');
   });
 }
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url){
-
+    loadListeners();
     // Put the image URL in Google search.
     console.log(url);
     renderStatus('You are at:' + url);
@@ -120,16 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   });
 });
-$("#saveReadLevel:first-child").unbind().click(function(){
+function loadListeners(){
+  $("#saveReadLevel").unbind().click(function(){
+    var reader_value = $('#reader_range')[0].value
+    saveToStorage(reader_value);
+  });
 
-  var reader_value = $('#reader_range')[0].value
-
-  console.log(reader_value);
-  saveToStorage(reader_value);
-  // updateReaderLevel(reader_value + '%');
-  console.log('MONEY');
-});
-
-$("#reader_range:first-child").unbind().click(function(){
-  updateReaderLevel($('#reader_range')[0].value + '%');
-});
+  $("#reader_range").unbind().change(function(){
+    updateReaderLevel($('#reader_range')[0].value + '%');
+  });
+}

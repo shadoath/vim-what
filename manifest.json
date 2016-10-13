@@ -1,14 +1,14 @@
 {
 
-  "name": "Wiki Read it",
-  "description": "This extension keeps track of what pages you have read online",
+  "name": "Vim what?",
+  "description": "Lookup of nifty vim commands",
   "version": "0.1",
 	"manifest_version": 2,
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
-		"default_title": "Wiki Read"
+		"default_title": "Vim what?"
   },
 
 	"background": {

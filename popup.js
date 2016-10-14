@@ -47,12 +47,12 @@ function getCurrentTabUrl(callback) {
 }
 
 
-function renderStatus(statusText) {
-  document.getElementById('status').textContent = statusText;
-}
-function updateReaderLevel(statusText) {
-  document.getElementById('read_status').textContent = statusText;
-}
+  function renderStatus(statusText) {
+    document.getElementById('status').textContent = statusText;
+  }
+  function updateReaderLevel(statusText) {
+    document.getElementById('read_status').textContent = statusText;
+  }
 
 function getcookie(c_name){
   var c_value = document.cookie;
@@ -108,6 +108,7 @@ function loadFromStorage(name) {
     updateReaderLevel(data[name] + '%');
   });
 }
+
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url){
     loadListeners();
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   });
 });
+
 function loadListeners(){
   $("#saveReadLevel").unbind().click(function(){
     var reader_value = $('#reader_range')[0].value

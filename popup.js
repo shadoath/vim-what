@@ -17,20 +17,24 @@
       "zxcvbnm,./"
     ],
 
-    "colmack": [
+    "colemack": [
       "1234567890=",
       "qwfpg[]jluy;-",
       "arstd/\\hneeio'",
       "zxcvb-=km,."
     ]
   };
+var key_info = {
+  "a": "after/around/ctrl-a ++/",
+  "b": ""
+}
 $(document).ready(function(){
 
   loadJSON("colemack");
-  infoblocks();
 });
 
 function loadJSON(keyboard){
+  $(".all").html("");
   currentKeyboard= ""
   layer = "";
 
@@ -57,17 +61,29 @@ function loadJSON(keyboard){
     });
   });
   $(".keyboard").append("</div>");
+  infoblocks();
 }
 function infoblocks(){
 
-  $(".key").on("click", function(){
-    console.log("Key:"+this.innerHTML);
+  $(".key").on("click", function(event, key){
+    if (event.shiftKey){
+      loadInfo(this.innerHTML, true);
+    }else{
+      loadInfo(this.innerHTML, false);
+    }
   });
 
   $("#layout-choice").on("change", function(){
-    console.log(this.innerHTML);
+    loadJSON($("#layout-choice").find(":selected").val());
   });
 
+}
+function loadInfo(key, shifted){
+  console.log(key);
+  console.log("shift? "+shifted);
+  $(".info").html("");
+  $(".info").append(key+"<br>");
+  $(".info").append(key_info[key]);
 }
 // function getCurrentTabUrl(callback) {
 //   // Query filter to be passed to chrome.tabs.query - see

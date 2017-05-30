@@ -67,7 +67,9 @@ function infoblocks(){
   });
 
   $(document).on('keyup', function(event, key) {
-    loadInfo(event['key'], event.shiftKey);
+    if(event['key'] != "Shift"){
+      loadInfo(event['key'], event.shiftKey);
+    }
   });
 }
 

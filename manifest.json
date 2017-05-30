@@ -24,5 +24,10 @@
     "cookies",
     "unlimitedStorage",
     "storage"
-  ]
+  ],
+
+  "icons": {
+    "32": "icon-32.jpg",
+    "128": "icon-128.jpg"
+  }
 }

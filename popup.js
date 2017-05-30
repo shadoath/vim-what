@@ -11,14 +11,14 @@
  */
   var layouts = {
     "qwerty": [
-      "1234567890-=",
+      "!@#$%^&*()-=",
       "qwertyuiop[]\\",
       "asdfghjkl;'",
       "zxcvbnm,./"
     ],
 
     "colemack": [
-      "1234567890=",
+      "!@#$%^&*()=",
       "qwfpg[]jluy;-",
       "arstd/\\hneeio'",
       "zxcvb-=km,."

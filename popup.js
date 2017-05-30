@@ -27,7 +27,11 @@ var layouts = {
 var key_info = {
   "a": {
     "title": "lowercase",
-    "text": "after/around/ctrl-a ++/"
+    "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
+  },
+  "A": {
+    "title": "UPPERCASE",
+    "text": "append at end of line"
   },
   "@": {
     "title": "Register",
@@ -35,63 +39,48 @@ var key_info = {
   }
 }
 $(document).ready(function(){
-
   loadJSON("colemack");
+  $("#layout-choice").on("change", function(){
+    loadJSON($("#layout-choice").find(":selected").val());
+  });
 });
 
 function loadJSON(keyboard){
-  $(".keyboard-base").html("");
-  currentKeyboard= ""
   layer = "";
+  $(".keyboard-base").html("<div class='keyboard' id='"+keyboard+"'>");
 
-  currentKeyboard ="<div class='keyboard' id='"+keyboard+"'>";
-  console.log(":"+layer);
-  $(".keyboard-base").append(currentKeyboard);
   $(layouts[keyboard]).each(function(layer, value){
-
-
-    console.log("Layer:"+layer);
     nextLayer = keyboard+"-"+layer;
     $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
-
     currentLayer ="<div class='"+nextLayer+"'>";
-    console.log("keyboard:    "+currentKeyboard);
-    console.log("currentLayer:"+currentLayer);
-
-    // $("."+nextLayer).append(nextLayer);
-
     $(value.split("")).each(function(i, k){
-      // console.log("Key:"+k);
-      // console.log("Key:"+currentLayer);
       $("#"+nextLayer).append("<span class='key'>"+k+"</span>");
     });
   });
   $(".keyboard").append("</div>");
   infoblocks();
 }
+
 function infoblocks(){
-
   $(".key").on("click", function(event, key){
-    if (event.shiftKey){
-      loadInfo(this.innerHTML, true);
-    }else{
-      loadInfo(this.innerHTML, false);
-    }
+    loadInfo(this.innerHTML, event.shiftKey);
   });
 
-  $("#layout-choice").on("change", function(){
-    loadJSON($("#layout-choice").find(":selected").val());
+  $(document).on('keyup', function(event, key) {
+    loadInfo(event['key'], event.shiftKey);
   });
-
 }
+
 function loadInfo(key, shifted){
-  console.log(key);
-  console.log("shift? "+shifted);
-  $(".info-key").html("");
-  $(".info-title").html("");
-  $(".info-text").html("");
-  $(".info-key").append(key);
-  $(".info-title").append(key_info[key]["title"]);
-  $(".info-text").append(key_info[key]["text"]);
+  if(shifted == true){
+    key = key.toUpperCase();
+  }
+  $(".info-key").html(key);
+  if(typeof key_info[key] != 'undefined'){
+    $(".info-title").html(key_info[key]["title"]);
+    $(".info-text").html(key_info[key]["text"]);
+  }else{
+    $(".info-title").html("no Vim info yet");
+    $(".info-text").html("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
+  }
 }
-

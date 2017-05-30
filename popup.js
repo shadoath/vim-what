@@ -9,25 +9,30 @@
  *   is found.
  *
  */
-  var layouts = {
-    "qwerty": [
-      "!@#$%^&*()-=",
-      "qwertyuiop[]\\",
-      "asdfghjkl;'",
-      "zxcvbnm,./"
-    ],
+var layouts = {
+  "qwerty": [
+    "!@#$%^&*()-=",
+    "qwertyuiop[]\\",
+    "asdfghjkl;'",
+    "zxcvbnm,./"
+  ],
 
-    "colemack": [
-      "!@#$%^&*()=",
-      "qwfpg[]jluy;-",
-      "arstd/\\hneeio'",
-      "zxcvb-=km,.",
-    ]
-  };
+  "colemack": [
+    "!@#$%^&*()=",
+    "qwfpg[]jluy;-",
+    "arstd/\\hneeio'",
+    "zxcvb-=km,.",
+  ]
+};
 var key_info = {
-  "a": "after/around/ctrl-a ++/",
-  "b": "",
-  "@": "Register<br>:let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_"
+  "a": {
+    "title": "lowercase",
+    "text": "after/around/ctrl-a ++/"
+  },
+  "@": {
+    "title": "Register",
+    "text": "<br>:let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_"
+  }
 }
 $(document).ready(function(){
 
@@ -35,13 +40,13 @@ $(document).ready(function(){
 });
 
 function loadJSON(keyboard){
-  $(".all").html("");
+  $(".keyboard-base").html("");
   currentKeyboard= ""
   layer = "";
 
   currentKeyboard ="<div class='keyboard' id='"+keyboard+"'>";
   console.log(":"+layer);
-  $(".all").append(currentKeyboard);
+  $(".keyboard-base").append(currentKeyboard);
   $(layouts[keyboard]).each(function(layer, value){
 
 
@@ -82,8 +87,11 @@ function infoblocks(){
 function loadInfo(key, shifted){
   console.log(key);
   console.log("shift? "+shifted);
-  $(".info").html("");
-  $(".info").append(key+"<br>");
-  $(".info").append(key_info[key]);
+  $(".info-key").html("");
+  $(".info-title").html("");
+  $(".info-text").html("");
+  $(".info-key").append(key);
+  $(".info-title").append(key_info[key]["title"]);
+  $(".info-text").append(key_info[key]["text"]);
 }
 

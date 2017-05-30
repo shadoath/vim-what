@@ -14,21 +14,30 @@
       .keyboard-base{
         margin:5px auto;
         width:690px;
-        height:263px;
+        height:380px;
         background-color:#999;
         border-radius:125px;
       }
 
       .keyboard { border:10px; }
 
-      .keyboardRow { position:relative; text-align:center; top:50px; }
+      .keyboardRow {
+        position:relative;
+        text-align:center;
+        top:50px;
+      }
+      .shifted {
+        margin-bottom: -11px;
+      }
 
       .key {
         background-color:#fff;
-        min-width:15px; display:inline-block;
-        border:1px solid #eee; margin-right:3px;
-        margin-left:3px;
-        padding:10px 12px;
+        display:inline-block;
+        min-width:15px;
+        border:1px solid #eee;
+        margin-right:1px;
+        margin-left:1px;
+        padding:6px 12px;
         margin-bottom:10px;
         border-radius:5px;
         -webkit-box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);

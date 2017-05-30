@@ -29,10 +29,17 @@ function loadJSON(keyboard){
   layer = "";
   $(".keyboard-base").html("<div class='keyboard' id='"+keyboard+"'>");
 
+  shifted = 0;
   $(layouts[keyboard]).each(function(layer, value){
+    shifted++;
     nextLayer = keyboard+"-"+layer;
     $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
-    currentLayer ="<div class='"+nextLayer+"'>";
+    if ((shifted % 2) == 1){
+      $("#"+keyboard).append("<div class='keyboardRow shifted' id='"+nextLayer+"'>");
+    }
+    else{
+      $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
+    }
     $(value.split("")).each(function(i, k){
       $("#"+nextLayer).append("<span class='key'>"+k+"</span>");
     });

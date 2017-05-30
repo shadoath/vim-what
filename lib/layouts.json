@@ -1,15 +1,23 @@
 {
   "qwerty": [
-    "!@#$%^&*()-=",
+    "!@#$%^&*()_+",
+    "1234567890-=",
+    "QWERTYUIOP{}|",
     "qwertyuiop[]\\",
+    "ASDFGHJKL:\"",
     "asdfghjkl;'",
+    "ZXCVBNM<>?",
     "zxcvbnm,./"
   ],
 
   "colemack": [
-    "!@#$%^&*()=",
+    "!@#$%^&*()+",
+    "1234567890=",
+    "QWFPG{}JLUY:_",
     "qwfpg[]jluy;-",
-    "arstd/\\hneeio'",
-    "zxcvb-=km,."
+    "ARSTD?|HNEIO\"",
+    "arstd/\\hneio'",
+    "ZXCVB_+KM<>?",
+    "zxcvb-=km,.⇧"
   ]
 }

@@ -21,12 +21,13 @@
       "!@#$%^&*()=",
       "qwfpg[]jluy;-",
       "arstd/\\hneeio'",
-      "zxcvb-=km,."
+      "zxcvb-=km,.",
     ]
   };
 var key_info = {
   "a": "after/around/ctrl-a ++/",
-  "b": ""
+  "b": "",
+  "@": "Register<br>:let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_"
 }
 $(document).ready(function(){
 

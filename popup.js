@@ -35,7 +35,7 @@ var key_info = {
   },
   "@": {
     "title": "Register",
-    "text": "<br>:let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_"
+    "text": ":let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_<br><br>:g/pattern/d X (delete pattern and save to x register)"
   }
 }
 $(document).ready(function(){

@@ -12,7 +12,7 @@
   },
 
 	"background": {
-		"scripts" : ["/lib/jquery-2.0.3.min.js", "/lib/object-watch.js", "/js/cookie_helpers.js", "/js/utils.js", "/js/data.js", "/js/background.js", "/devtools/background-devtools.js", "/js/ga.js"]
+		"scripts" : ["/lib/jquery-2.0.3.min.js", "/js/ga.js"]
 	},
 
   "permissions": [

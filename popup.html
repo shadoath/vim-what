@@ -1,51 +1,57 @@
-<!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
 <html>
   <head>
-    <title>Vim What?</title>
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.6.3/css/font-awesome.css">
+    <title>Vim... what?</title>
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
       }
-      #status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        <!-- overflow: hidden; -->
-        max-width: 400px;
+
+      body { font-family: Arial, Helvetica, sans-serif; background-color:eee;}
+
+      .all { margin:20px auto; width:690px; height:80%; background-color:#999; border-radius:20px;}
+
+      .keyboard { border:10px; }
+
+      .keyboardRow { position:relative; text-align:center; top:50px; }
+
+      .key {
+        background-color:#fff;
+        min-width:15px; display:inline-block;
+        border:1px solid #eee; margin-right:3px;
+        margin-left:3px;
+        padding:10px 12px;
+        margin-bottom:10px;
+        border-radius:5px;
+        -webkit-box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+        box-shadow: 0 0 2px 1px rgba(0,0,0,0.3);
+        box-shadow: 0px 2px 3px #222;
       }
+
+      .key:hover { position:relative; background-color:#e0e0e0; cursor:pointer; box-shadow: 0px 2px 3px #eee; top:2px; }
+
+
     </style>
 
-		<script type="text/javascript" src="/lib/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/lib/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="popup.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+    <script type="text/javascript" src="/lib/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="/popup.js"></script>
+
   </head>
   <body>
-    <a id="addReadLevel" i18n_title="addReadLevel">
-      <i class="fa fa-plus"></i>
-      <span i18n="addReadLevel"></span>
-    </a>
-    <a id="reduceReadLevel" i18n_title="reduceReadLevel">
-      <i class="fa fa-minus"></i>
-      <span i18n="reduceReadLevel"></span>
-    </a>
-    <a id="editReadLevel" i18n_title="editReadLevel">
-      <i class="fa fa-pencil-square-o"></i>
-      <span i18n="editReadLevel"></span>
-    </a>
-    <a id="saveReadLevel" class="button" i18n_title="saveReadLevel">
-      <i class="fa fa-floppy-o"></i>
-      <span i18n="saveReadLevel"></span>
-    </a>
-    <input id="reader_range" type="range">
-    <div id="status"></div>
-    <div id="read_status"></div>
+    <div class="all">
+    </div>
+    <div class="info">
+      Click <br>for Info
+    </div>
+
+    <div class="layout-select">
+      <select id="layout-choice">
+        <option value="colemack">Colemack</option>
+        <option value="qwerty">Qwerty</option>
+      </select>
+    </div>
   </body>
 </html>
 

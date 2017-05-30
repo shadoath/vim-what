@@ -9,37 +9,17 @@
  *   is found.
  *
  */
-var layouts = {
-  "qwerty": [
-    "!@#$%^&*()-=",
-    "qwertyuiop[]\\",
-    "asdfghjkl;'",
-    "zxcvbnm,./"
-  ],
+var layouts = {};
+var key_info = {};
 
-  "colemack": [
-    "!@#$%^&*()=",
-    "qwfpg[]jluy;-",
-    "arstd/\\hneeio'",
-    "zxcvb-=km,.",
-  ]
-};
-var key_info = {
-  "a": {
-    "title": "lowercase",
-    "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
-  },
-  "A": {
-    "title": "UPPERCASE",
-    "text": "append at end of line"
-  },
-  "@": {
-    "title": "Register",
-    "text": ":let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_<br><br>:g/pattern/d X (delete pattern and save to x register)"
-  }
-}
 $(document).ready(function(){
-  loadJSON("colemack");
+  $.getJSON("/lib/key_info.json", function(json) {
+    key_info = json;
+  });
+  $.getJSON("/lib/layouts.json", function(json) {
+    layouts = json;
+    loadJSON("colemack");
+  });
   $("#layout-choice").on("change", function(){
     loadJSON($("#layout-choice").find(":selected").val());
   });

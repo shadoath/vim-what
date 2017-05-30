@@ -1,0 +1,15 @@
+{
+  "a": {
+    "title": "lowercase",
+    "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
+  },
+  "A": {
+    "title": "UPPERCASE",
+    "text": "append at end of line"
+  },
+  "@": {
+    "title": "Register",
+    "text": ":let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_<br><br>:g/pattern/d X (delete pattern and save to x register)"
+  }
+}
+

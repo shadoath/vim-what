@@ -1,0 +1,15 @@
+{
+  "qwerty": [
+    "!@#$%^&*()-=",
+    "qwertyuiop[]\\",
+    "asdfghjkl;'",
+    "zxcvbnm,./"
+  ],
+
+  "colemack": [
+    "!@#$%^&*()=",
+    "qwfpg[]jluy;-",
+    "arstd/\\hneeio'",
+    "zxcvb-=km,."
+  ]
+}

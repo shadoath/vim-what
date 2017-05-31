@@ -1,6 +1,7 @@
 {
   "a": {
     "title": "lowercase",
+    "image": "",
     "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
   },
   "A": {

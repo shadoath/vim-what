@@ -41,7 +41,11 @@ function loadJSON(keyboard){
       $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
     }
     $(value.split("")).each(function(i, k){
-      $("#"+nextLayer).append("<span class='key'>"+k+"</span>");
+      if(typeof key_info[k] != 'undefined' && typeof key_info[k]["image"] != 'undefined'){
+        $("#"+nextLayer).append("<span class='key' data-key='"+k+"'><img src='"+key_info[k]["image"]+"'>"+k+"</span>");
+      }else{
+        $("#"+nextLayer).append("<span class='key' data-key=\""+k+"\">"+k+"</span>");
+      }
     });
   });
   $(".keyboard").append("</div>");

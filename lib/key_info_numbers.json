@@ -1,0 +1,53 @@
+{
+  "0": {
+    "title": "Number 0",
+    "image": "/images/numbers/0.png",
+    "text": ""
+  },
+  "1": {
+    "title": "Number 1",
+    "image": "/images/numbers/1.png",
+    "text": ""
+  },
+  "2": {
+    "title": "Number 2",
+    "image": "/images/numbers/2.png",
+    "text": ""
+  },
+  "3": {
+    "title": "Number 3",
+    "image": "/images/numbers/3.png",
+    "text": ""
+  },
+  "4": {
+    "title": "Number 4",
+    "image": "/images/numbers/4.png",
+    "text": ""
+  },
+  "5": {
+    "title": "Number 5",
+    "image": "/images/numbers/5.png",
+    "text": ""
+  },
+  "6": {
+    "title": "Number 6",
+    "image": "/images/numbers/6.png",
+    "text": ""
+  },
+  "7": {
+    "title": "Number 7",
+    "image": "/images/numbers/7.png",
+    "text": ""
+  },
+  "8": {
+    "title": "Number 8",
+    "image": "/images/numbers/8.png",
+    "text": ""
+  },
+  "9": {
+    "title": "Number 9",
+    "image": "/images/numbers/9.png",
+    "text": ""
+  }
+}
+

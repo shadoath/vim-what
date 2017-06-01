@@ -13,8 +13,14 @@ var layouts = {};
 var key_info = {};
 
 $(document).ready(function(){
-  $.getJSON("/lib/key_info.json", function(json) {
-    key_info = json;
+  $.getJSON("/lib/key_info_symbols.json", function(json) {
+    $.extend(key_info, json);
+  });
+  $.getJSON("/lib/key_info_numbers.json", function(json) {
+    $.extend(key_info, json);
+  });
+  $.getJSON("/lib/key_info_letters.json", function(json) {
+    $.extend(key_info, json);
   });
   $.getJSON("/lib/layouts.json", function(json) {
     layouts = json;

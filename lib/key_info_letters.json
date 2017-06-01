@@ -6,7 +6,258 @@
   },
   "A": {
     "title": "UPPERCASE",
+    "image": "/images/letters/aa.png",
     "text": "append at end of line"
+  },
+  "b": {
+    "title": "lowercase",
+    "image": "/images/letters/b.png",
+    "text": ""
+  },
+  "B": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/bb.png",
+    "text": ""
+  },
+  "c": {
+    "title": "lowercase",
+    "image": "/images/letters/c.png",
+    "text": ""
+  },
+  "C": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/cc.png",
+    "text": ""
+  },
+  "d": {
+    "title": "lowercase",
+    "image": "/images/letters/d.png",
+    "text": ""
+  },
+  "D": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/dd.png",
+    "text": ""
+  },
+  "e": {
+    "title": "lowercase",
+    "image": "/images/letters/e.png",
+    "text": ""
+  },
+  "E": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/ee.png",
+    "text": ""
+  },
+  "f": {
+    "title": "lowercase",
+    "image": "/images/letters/f.png",
+    "text": ""
+  },
+  "F": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/ff.png",
+    "text": ""
+  },
+  "g": {
+    "title": "lowercase",
+    "image": "/images/letters/g.png",
+    "text": ""
+  },
+  "G": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/gg.png",
+    "text": ""
+  },
+  "h": {
+    "title": "lowercase",
+    "image": "/images/letters/h.png",
+    "text": ""
+  },
+  "H": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/hh.png",
+    "text": ""
+  },
+  "i": {
+    "title": "lowercase",
+    "image": "/images/letters/i.png",
+    "text": ""
+  },
+  "I": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/ii.png",
+    "text": ""
+  },
+  "j": {
+    "title": "lowercase",
+    "image": "/images/letters/j.png",
+    "text": ""
+  },
+  "J": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/jj.png",
+    "text": ""
+  },
+  "k": {
+    "title": "lowercase",
+    "image": "/images/letters/k.png",
+    "text": ""
+  },
+  "K": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/kk.png",
+    "text": ""
+  },
+  "l": {
+    "title": "lowercase",
+    "image": "/images/letters/l.png",
+    "text": ""
+  },
+  "L": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/ll.png",
+    "text": ""
+  },
+  "m": {
+    "title": "lowercase",
+    "image": "/images/letters/m.png",
+    "text": ""
+  },
+  "M": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/mm.png",
+    "text": ""
+  },
+  "n": {
+    "title": "lowercase",
+    "image": "/images/letters/n.png",
+    "text": ""
+  },
+  "N": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/nn.png",
+    "text": ""
+  },
+  "o": {
+    "title": "lowercase",
+    "image": "/images/letters/o.png",
+    "text": ""
+  },
+  "O": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/oo.png",
+    "text": ""
+  },
+  "p": {
+    "title": "lowercase",
+    "image": "/images/letters/p.png",
+    "text": ""
+  },
+  "P": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/pp.png",
+    "text": ""
+  },
+  "q": {
+    "title": "lowercase",
+    "image": "/images/letters/q.png",
+    "text": ""
+  },
+  "Q": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/qq.png",
+    "text": ""
+  },
+  "r": {
+    "title": "lowercase",
+    "image": "/images/letters/r.png",
+    "text": ""
+  },
+  "R": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/rr.png",
+    "text": ""
+  },
+  "s": {
+    "title": "lowercase",
+    "image": "/images/letters/s.png",
+    "text": ""
+  },
+  "S": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/ss.png",
+    "text": ""
+  },
+  "t": {
+    "title": "lowercase",
+    "image": "/images/letters/t.png",
+    "text": ""
+  },
+  "T": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/tt.png",
+    "text": ""
+  },
+  "u": {
+    "title": "lowercase",
+    "image": "/images/letters/u.png",
+    "text": ""
+  },
+  "U": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/uu.png",
+    "text": ""
+  },
+  "v": {
+    "title": "lowercase",
+    "image": "/images/letters/v.png",
+    "text": ""
+  },
+  "V": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/vv.png",
+    "text": ""
+  },
+  "w": {
+    "title": "lowercase",
+    "image": "/images/letters/w.png",
+    "text": ""
+  },
+  "W": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/ww.png",
+    "text": ""
+  },
+  "x": {
+    "title": "lowercase",
+    "image": "/images/letters/x.png",
+    "text": ""
+  },
+  "X": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/xx.png",
+    "text": ""
+  },
+  "y": {
+    "title": "lowercase",
+    "image": "/images/letters/y.png",
+    "text": ""
+  },
+  "Y": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/yy.png",
+    "text": ""
+  },
+  "z": {
+    "title": "lowercase",
+    "image": "/images/letters/z.png",
+    "text": ""
+  },
+  "Z": {
+    "title": "UPPERCASE",
+    "image": "/images/letters/zz.png",
+    "text": ""
   }
 }
 

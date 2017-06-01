@@ -1,4 +1,136 @@
 {
+  "0": {
+    "title": "Number 0",
+    "image": "/images/0.png",
+    "text": ""
+  },
+  "1": {
+    "title": "Number 1",
+    "image": "/images/1.png",
+    "text": ""
+  },
+  "2": {
+    "title": "Number 2",
+    "image": "/images/2.png",
+    "text": ""
+  },
+  "3": {
+    "title": "Number 3",
+    "image": "/images/3.png",
+    "text": ""
+  },
+  "4": {
+    "title": "Number 4",
+    "image": "/images/4.png",
+    "text": ""
+  },
+  "5": {
+    "title": "Number 5",
+    "image": "/images/5.png",
+    "text": ""
+  },
+  "6": {
+    "title": "Number 6",
+    "image": "/images/6.png",
+    "text": ""
+  },
+  "7": {
+    "title": "Number 7",
+    "image": "/images/7.png",
+    "text": ""
+  },
+  "8": {
+    "title": "Number 8",
+    "image": "/images/8.png",
+    "text": ""
+  },
+  "9": {
+    "title": "Number 9",
+    "image": "/images/9.png",
+    "text": ""
+  },
+
+  "~": {
+    "title": "Tilde",
+    "image": "/images/tilde.png",
+    "text": ""
+  },
+  "!": {
+    "title": "Bang",
+    "image": "/images/bang.png",
+    "text": ""
+  },
+  "@": {
+    "title": "At/Register",
+    "image": "/images/at.png",
+    "text": ":let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_<br><br>:g/pattern/d X (delete pattern and save to x register)"
+  },
+  "#": {
+    "title": "Hash",
+    "image": "/images/hash.png",
+    "text": ""
+  },
+  "$": {
+    "title": "Money",
+    "image": "/images/money.png",
+    "text": ""
+  },
+  "%": {
+    "title": "Percent",
+    "image": "/images/percent.png",
+    "text": ""
+  },
+  "^": {
+    "title": "Caret",
+    "image": "/images/caret.png",
+    "text": ""
+  },
+  "&": {
+    "title": "Ampersand",
+    "image": "/images/ampersand.png",
+    "text": ""
+  },
+  "*": {
+    "title": "Asterisk",
+    "image": "/images/42.png",
+    "text": ""
+  },
+  "(": {
+    "title": "Begin parenthesis",
+    "image": "/images/begin_parenthesis.png",
+    "text": ""
+  },
+  ")": {
+    "title": "end_parenthesis",
+    "image": "/images/end_parenthesis.png",
+    "text": ""
+  },
+  "_": {
+    "title": "Underscore",
+    "image": "/images/underscore.png",
+    "text": ""
+  },
+  "+": {
+    "title": "Plus",
+    "image": "/images/plus.png",
+    "text": ""
+  },
+  "-": {
+    "title": "Minus/Dash",
+    "image": "/images/dash.png",
+    "text": ""
+  },
+  "=": {
+    "title": "Equal",
+    "image": "/images/equal.png",
+    "text": ""
+  },
+  "`": {
+    "title": "backtick",
+    "image": "/images/backtick.png",
+    "text": ""
+  },
+
   "a": {
     "title": "lowercase",
     "image": "",
@@ -7,10 +139,6 @@
   "A": {
     "title": "UPPERCASE",
     "text": "append at end of line"
-  },
-  "@": {
-    "title": "Register",
-    "text": ":let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_<br><br>:g/pattern/d X (delete pattern and save to x register)"
   }
 }
 

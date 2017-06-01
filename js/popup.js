@@ -41,11 +41,13 @@ function loadJSON(keyboard){
       $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
     }
     $(value.split("")).each(function(i, k){
+      keyInfo = "<div class='key'>";
       if(typeof key_info[k] != 'undefined' && typeof key_info[k]["image"] != 'undefined'){
-        $("#"+nextLayer).append("<span class='key' data-key='"+k+"'><img src='"+key_info[k]["image"]+"'>"+k+"</span>");
-      }else{
-        $("#"+nextLayer).append("<span class='key' data-key=\""+k+"\">"+k+"</span>");
+        keyInfo += "<img src='"+key_info[k]["image"]+"'>";
       }
+      keyInfo += "<span class='key-value'>"+k+"</span>";
+      keyInfo += "</div>";
+      $("#"+nextLayer).append(keyInfo);
     });
   });
   $(".keyboard").append("</div>");
@@ -54,7 +56,7 @@ function loadJSON(keyboard){
 
 function infoblocks(){
   $(".key").on("click", function(event, key){
-    loadInfo(this.innerHTML, event.shiftKey);
+    loadInfo($(this).find("span")[0].innerHTML, event.shiftKey);
   });
 
   $(document).on('keyup', function(event, key) {
@@ -65,13 +67,18 @@ function infoblocks(){
 }
 
 function loadInfo(key, shifted){
+  console.log("loadInfo: "+key);
   if(shifted == true){
     key = key.toUpperCase();
   }
-  $(".info-key").html(key);
   if(typeof key_info[key] != 'undefined'){
     $(".info-title").html(key_info[key]["title"]);
     $(".info-text").html(key_info[key]["text"]);
+    if(typeof key_info[key]["image"] != 'undefined'){
+      $(".info-key").html("<img src='"+key_info[key]["image"]+"'>");
+    }else{
+      $(".info-key").html(key);
+    }
   }else{
     $(".info-title").html("no Vim info yet");
     $(".info-text").html("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");

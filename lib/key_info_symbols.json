@@ -83,6 +83,86 @@
     "title": "backtick",
     "image": "/images/symbols/backtick.png",
     "text": ""
+  },
+  "[": {
+    "title": "Beginning Bracket",
+    "image": "/images/symbols/begin_bracket.png",
+    "text": ""
+  },
+  "]": {
+    "title": "Ending Bracket",
+    "image": "/images/symbols/end_bracket.png",
+    "text": ""
+  },
+  "{": {
+    "title": "Begin Brace",
+    "image": "/images/symbols/begin_brace.png",
+    "text": ""
+  },
+  "}": {
+    "title": "End Brace",
+    "image": "/images/symbols/end_brace.png",
+    "text": ""
+  },
+  "?": {
+    "title": "Question Mark",
+    "image": "/images/symbols/question_mark.png",
+    "text": ""
+  },
+  "/": {
+    "title": "Forward Slash",
+    "image": "/images/symbols/forward_slash.png",
+    "text": ""
+  },
+  "\\": {
+    "title": "Back Slash",
+    "image": "/images/symbols/back_slash.png",
+    "text": ""
+  },
+  "|": {
+    "title": "Pipe",
+    "image": "/images/symbols/pipe.png",
+    "text": ""
+  },
+  ".": {
+    "title": "dot",
+    "image": "/images/symbols/dot.png",
+    "text": ""
+  },
+  ",": {
+    "title": "Comma",
+    "image": "/images/symbols/comma.png",
+    "text": ""
+  },
+  "\"": {
+    "title": "Double Quote",
+    "image": "/images/symbols/double_quote.png",
+    "text": ""
+  },
+  "'": {
+    "title": "Single Quote",
+    "image": "/images/symbols/single_quote.png",
+    "text": ""
+  },
+  ";": {
+    "title": "Semicolon",
+    "image": "/images/symbols/semicolon.png",
+    "text": ""
+  },
+  ":": {
+    "title": "Colon",
+    "image": "/images/symbols/colon.png",
+    "text": ""
+  },
+  ">": {
+    "title": "Greater than",
+    "image": "/images/symbols/greater_than.png",
+    "text": ""
+  },
+  "<": {
+    "title": "Less than",
+    "image": "/images/symbols/less_than.png",
+    "text": ""
   }
 }
 

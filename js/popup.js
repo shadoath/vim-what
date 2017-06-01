@@ -80,6 +80,7 @@ function loadInfo(key, shifted){
       $(".info-key").html(key);
     }
   }else{
+    $(".info-key").html("");
     $(".info-title").html("no Vim info yet");
     $(".info-text").html("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }

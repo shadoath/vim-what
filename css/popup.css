@@ -3,6 +3,8 @@ body {
   font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
   font-size: 100%;
   background-color:eee;
+  margin: 0px;
+
 }
 
 .layout-select {
@@ -13,7 +15,7 @@ body {
 
 .keyboard-base{
   margin:5px auto;
-  width:803px;
+  width:800px;
   height:380px;
   background-color:#999;
   border-radius:125px;
@@ -44,8 +46,7 @@ body {
   /* box-shadow: 0 0 2px 1px rgba(0,0,0,0.3); */
   /* box-shadow: 0px 2px 3px #222; */
 }
-
-img{
+.key img {
   max-width: 56px;
 }
 
@@ -62,8 +63,20 @@ img{
 }
 
 .info-key{
+  max-width: 30%;
   float: left;
   width: auto;
-  margin-right: 5px;
-  color: blue;
+  margin-right: 30px;
+}
+.info-title{
+  float: left;
+  max-width: 30%;
+}
+.info-text{
+  max-width: 30%;
+  float: right;
+  width: auto;
+}
+.info img {
+  max-width: 100%;
 }

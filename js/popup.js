@@ -41,19 +41,18 @@ $(document).ready(function(){
     curLesson = $("#lesson-choice").find(":selected").val();
     if(curLesson == "11"){
       loadKeyboard(curLayout);
+      $(".info-key").html("<img src='/images/about/all.png'>");
     }
     else{
       loadLesson(curLesson);
+      $(".info-key").html("<img src='/images/about/lesson_"+curLesson+".png'>");
     }
   });
 });
 
 function loadLesson(lesson){
   console.log(lesson);
-  layer = "";
-
   $(".key").addClass("faded");
-  currentKeyboard =
   $(lessons[lesson].split("")).each(function(i, k){
     keySpan    = "<span class='key-value'>"+k+"</span>";
     lessonSpan = $( "div:contains('"+keySpan+"')" );
@@ -110,16 +109,14 @@ function loadInfo(key, shifted){
     key = key.toUpperCase();
   }
   if(typeof key_info[key] != 'undefined'){
-    $(".info-title").html(key_info[key]["title"]);
-    $(".info-text").html(key_info[key]["text"]);
+    $(".info-key").html(key_info[key]["text"]);
     if(typeof key_info[key]["image"] != 'undefined'){
-      $(".info-key").html("<img src='"+key_info[key]["image"]+"'>");
+      $(".info-key").append("<img src='"+key_info[key]["image"]+"'>");
     }else{
-      $(".info-key").html(key);
+      $(".info-key").append(key);
     }
   }else{
-    $(".info-key").html("");
-    $(".info-title").html("no Vim info yet");
-    $(".info-text").html("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
+    $(".info-key").html("no Vim info yet");
+    $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }
 }

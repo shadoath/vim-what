@@ -70,19 +70,9 @@ body {
 }
 
 .info-key{
-  max-width: 30%;
   float: left;
   width: auto;
   margin-right: 30px;
-}
-.info-title{
-  float: left;
-  max-width: 30%;
-}
-.info-text{
-  max-width: 30%;
-  float: right;
-  width: auto;
 }
 .info img {
   max-width: 100%;

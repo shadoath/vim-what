@@ -49,7 +49,7 @@ function startup(layout, lesson){
     $(".info-key").html("<img src='/images/about/all.png'>");
   }
   else{
-    loadLesson(lesson);
+    loadLesson(parseInt(lesson));
     $(".info-key").html("<img src='/images/about/lesson_"+lesson+".png'>");
   }
 
@@ -58,13 +58,19 @@ function startup(layout, lesson){
 function loadLesson(lesson){
   console.log(lesson);
   $(".key").addClass("faded");
-  $(lessons[lesson].split("")).each(function(i, k){
-    keySpan    = "<span class='key-value'>"+k+"</span>";
-    lessonSpan = $( "div:contains('"+keySpan+"')" );
-    console.log(keySpan);
-    console.log(lessonSpan);
-    $("span:contains('"+k+"')").parent().removeClass("faded")
-  })
+  $([0,1,2,3,4,5,6,7]).each(function(I, lessonLayer){
+    console.log(lesson+" ? "+lessonLayer);
+    if(lesson >= I){
+      console.log(lesson+" >= "+I);
+      $(lessons[I].split("")).each(function(i, k){
+        $("span:contains('"+k+"')").parent().removeClass("faded");
+        if(lesson > I){
+          console.log(lesson);
+          $("span:contains('"+k+"')").parent().addClass("some-faded");
+        }
+      });
+    }
+  });
 }
 
 function loadKeyboard(keyboard){

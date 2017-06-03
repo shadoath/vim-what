@@ -8,12 +8,16 @@ body {
 }
 
 .layout-select {
-  margin: 5px auto;
+  float: left;
   width: 30%;
   display: grid;
 }
+.lesson-select {
+  float: right;
+}
 
 .keyboard-base{
+  float: left;
   margin:5px auto;
   width:800px;
   height:380px;
@@ -56,6 +60,9 @@ body {
   cursor:pointer;
   box-shadow: 0px 1px 1px #eee;
   top:1px;
+}
+.faded {
+  opacity: .4;
 }
 
 .key-value{

@@ -9,8 +9,12 @@
  *   is found.
  *
  */
-var layouts = {};
-var key_info = {};
+var layouts   = {};
+var curLayout = "colemack";
+var lessons   = {};
+var curLesson = "0";
+var key_info  = {};
+
 
 $(document).ready(function(){
   $.getJSON("/lib/key_info_symbols.json", function(json) {
@@ -22,16 +26,44 @@ $(document).ready(function(){
   $.getJSON("/lib/key_info_letters.json", function(json) {
     $.extend(key_info, json);
   });
+  $.getJSON("/lib/lessons.json", function(json) {
+    lessons = json;
+  });
   $.getJSON("/lib/layouts.json", function(json) {
     layouts = json;
-    loadJSON("colemack");
+    loadKeyboard(curLayout);
   });
   $("#layout-choice").on("change", function(){
-    loadJSON($("#layout-choice").find(":selected").val());
+    curLayout = $("#layout-choice").find(":selected").val();
+    loadLesson(curLayout);
+  });
+  $("#lesson-choice").on("change", function(){
+    curLesson = $("#lesson-choice").find(":selected").val();
+    if(curLesson == "11"){
+      loadKeyboard(curLayout);
+    }
+    else{
+      loadLesson(curLesson);
+    }
   });
 });
 
-function loadJSON(keyboard){
+function loadLesson(lesson){
+  console.log(lesson);
+  layer = "";
+
+  $(".key").addClass("faded");
+  currentKeyboard =
+  $(lessons[lesson].split("")).each(function(i, k){
+    keySpan    = "<span class='key-value'>"+k+"</span>";
+    lessonSpan = $( "div:contains('"+keySpan+"')" );
+    console.log(keySpan);
+    console.log(lessonSpan);
+    $("span:contains('"+k+"')").parent().removeClass("faded")
+  })
+}
+
+function loadKeyboard(keyboard){
   layer = "";
   $(".keyboard-base").html("<div class='keyboard' id='"+keyboard+"'>");
 
@@ -47,7 +79,7 @@ function loadJSON(keyboard){
       $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
     }
     $(value.split("")).each(function(i, k){
-      keyInfo = "<div class='key'>";
+      keyInfo = "<div class='key' id='"+k+"'>";
       if(typeof key_info[k] != 'undefined' && typeof key_info[k]["image"] != 'undefined'){
         keyInfo += "<img src='"+key_info[k]["image"]+"'>";
       }

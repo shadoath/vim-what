@@ -35,20 +35,25 @@ $(document).ready(function(){
   });
   $("#layout-choice").on("change", function(){
     curLayout = $("#layout-choice").find(":selected").val();
-    loadLesson(curLayout);
+    startup(curLayout, curLesson)
   });
   $("#lesson-choice").on("change", function(){
     curLesson = $("#lesson-choice").find(":selected").val();
-    if(curLesson == "11"){
-      loadKeyboard(curLayout);
-      $(".info-key").html("<img src='/images/about/all.png'>");
-    }
-    else{
-      loadLesson(curLesson);
-      $(".info-key").html("<img src='/images/about/lesson_"+curLesson+".png'>");
-    }
+    startup(curLayout, curLesson)
   });
 });
+
+function startup(layout, lesson){
+  loadKeyboard(layout);
+  if(curLesson == "11"){
+    $(".info-key").html("<img src='/images/about/all.png'>");
+  }
+  else{
+    loadLesson(lesson);
+    $(".info-key").html("<img src='/images/about/lesson_"+lesson+".png'>");
+  }
+
+}
 
 function loadLesson(lesson){
   console.log(lesson);

@@ -2,7 +2,7 @@
   "0": {
     "title": "Number 0",
     "image": "/images/numbers/0.png",
-    "text": ""
+    "text": "Go to beginning of line, Add 'nnoremap 0 ^' to return to first non-blank character"
   },
   "1": {
     "title": "Number 1",

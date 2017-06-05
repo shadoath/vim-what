@@ -17,107 +17,107 @@
   "#": {
     "title": "Hash",
     "image": "/images/symbols/hash.png",
-    "text": ""
+    "text": "Same as '*', but search backward."
   },
   "$": {
     "title": "Money",
     "image": "/images/symbols/money.png",
-    "text": ""
+    "text": "To end of line"
   },
   "%": {
     "title": "Percent",
     "image": "/images/symbols/percent.png",
-    "text": ""
+    "text": "Find the next item in this line after or under the cursor and jump to its match. |inclusive| motion."
   },
   "^": {
     "title": "Caret",
     "image": "/images/symbols/caret.png",
-    "text": ""
+    "text": "Return to first non-blank character"
   },
   "&": {
     "title": "Ampersand",
     "image": "/images/symbols/ampersand.png",
-    "text": ""
+    "text": "Synonym for `:s` (repeat last substitute)<br>Note that the flags are not remembered, thus it might actually work differently.<br>You can use `:&&` to keep the flags."
   },
   "&amp;": {
     "title": "Ampersand",
     "image": "/images/symbols/ampersand.png",
-    "text": ""
+    "text": "Synonym for `:s` (repeat last substitute)<br>Note that the flags are not remembered, thus it might actually work differently.<br>You can use `:&&` to keep the flags."
   },
   "*": {
     "title": "Asterisk",
     "image": "/images/symbols/42.png",
-    "text": ""
+    "text": "Search forward for the [count]'th occurrence of the word nearest to the cursor"
   },
   "(": {
     "title": "Begin parenthesis",
     "image": "/images/symbols/begin_parenthesis.png",
-    "text": ""
+    "text": "[count] sentences backward.  |exclusive| motion."
   },
   ")": {
     "title": "end_parenthesis",
     "image": "/images/symbols/end_parenthesis.png",
-    "text": ""
+    "text": "[count] sentences forward.  |exclusive| motion."
   },
   "_": {
     "title": "Underscore",
     "image": "/images/symbols/underscore.png",
-    "text": ""
+    "text": "[count] - 1 lines downward, on the first non-blank character |linewise|."
   },
   "+": {
     "title": "Plus",
     "image": "/images/symbols/plus.png",
-    "text": ""
+    "text": "[count] lines downward, on the first non-blank character |linewise|."
   },
   "-": {
     "title": "Minus/Dash",
     "image": "/images/symbols/dash.png",
-    "text": ""
+    "text": "[count] lines upward, on the first non-blank character |linewise|. <br>Plugin andrewRadev/switch to change true/false, etc"
   },
   "=": {
     "title": "Equal",
     "image": "/images/symbols/equal.png",
-    "text": ""
+    "text": "Filter {motion} lines through the external program given with the 'equalprg' option.  When the 'equalprg' option is empty (this is the default), use the internal formatting function"
   },
   "`": {
     "title": "backtick",
     "image": "/images/symbols/backtick.png",
-    "text": ""
+    "text": "Jump to the mark {a-z} in the current buffer."
   },
   "[": {
     "title": "Beginning Bracket",
     "image": "/images/symbols/begin_bracket.png",
-    "text": ""
+    "text": "A lot of Vim power found here! check out :help ["
   },
   "]": {
     "title": "Ending Bracket",
     "image": "/images/symbols/end_bracket.png",
-    "text": ""
+    "text": "A lot of Vim power found here! check out :help ]"
   },
   "{": {
     "title": "Begin Brace",
     "image": "/images/symbols/begin_brace.png",
-    "text": ""
+    "text": "[count] paragraphs backward.  |exclusive| motion."
   },
   "}": {
     "title": "End Brace",
     "image": "/images/symbols/end_brace.png",
-    "text": ""
+    "text": "[count] paragraphs forward.  |exclusive| motion."
   },
   "?": {
     "title": "Question Mark",
     "image": "/images/symbols/question_mark.png",
-    "text": ""
+    "text": "Search backward for the [count]'th occurrence of the latest used pattern |last-pattern| with latest used |{offset}|."
   },
   "/": {
     "title": "Forward Slash",
     "image": "/images/symbols/forward_slash.png",
-    "text": ""
+    "text": "Search forward for the [count]'th occurrence of the latest used pattern |last-pattern| with latest used |{offset}|."
   },
   "\\": {
     "title": "Back Slash",
     "image": "/images/symbols/back_slash.png",
-    "text": ""
+    "text": "A backslash followed by a single character, with no special meaning, is reserved for future expansions"
   },
   "|": {
     "title": "Pipe",

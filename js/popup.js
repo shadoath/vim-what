@@ -120,12 +120,12 @@ function loadInfo(key, shifted){
     key = key.toUpperCase();
   }
   if(typeof key_info[key] != 'undefined'){
-    $(".info-key").html(key_info[key]["text"]);
     if(typeof key_info[key]["image"] != 'undefined'){
-      $(".info-key").append("<img src='"+key_info[key]["image"]+"'>");
+      $(".info-key").html("<img src='"+key_info[key]["image"]+"'><br>");
     }else{
-      $(".info-key").append(key);
+      $(".info-key").html(key+"<br>");
     }
+    $(".info-key").append(key_info[key]["text"]);
   }else{
     $(".info-key").html("no Vim info yet");
     $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");

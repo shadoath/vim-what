@@ -10,11 +10,10 @@
  *
  */
 var layouts   = {};
-var curLayout = "colemack";
 var lessons   = {};
+var curLayout = "colemack";
 var curLesson = "0";
 var key_info  = {};
-
 
 $(document).ready(function(){
   $.getJSON("/lib/key_info_symbols.json", function(json) {
@@ -31,7 +30,6 @@ $(document).ready(function(){
   });
   $.getJSON("/lib/layouts.json", function(json) {
     layouts = json;
-    loadKeyboard(curLayout);
   });
   $("#layout-choice").on("change", function(){
     curLayout = $("#layout-choice").find(":selected").val();
@@ -40,6 +38,13 @@ $(document).ready(function(){
   $("#lesson-choice").on("change", function(){
     curLesson = $("#lesson-choice").find(":selected").val();
     startup(curLayout, curLesson)
+  });
+  chrome.storage.sync.get(['curLayout', 'curLesson'], function(data) {
+    curLayout = data.curLayout;
+    curLesson = data.curLesson;
+    $("#layout-choice").val(curLayout);
+    $("#lesson-choice").val(curLesson);
+    startup(curLayout, curLesson);
   });
 });
 
@@ -56,21 +61,18 @@ function startup(layout, lesson){
 }
 
 function loadLesson(lesson){
-  console.log(lesson);
   $(".key").addClass("faded");
   $([0,1,2,3,4,5,6,7]).each(function(I, lessonLayer){
-    console.log(lesson+" ? "+lessonLayer);
     if(lesson >= I){
-      console.log(lesson+" >= "+I);
       $(lessons[I].split("")).each(function(i, k){
         $("span:contains('"+k+"')").parent().removeClass("faded");
         if(lesson > I){
-          console.log(lesson);
           $("span:contains('"+k+"')").parent().addClass("some-faded");
         }
       });
     }
   });
+  saveChanges();
 }
 
 function loadKeyboard(keyboard){
@@ -130,4 +132,10 @@ function loadInfo(key, shifted){
     $(".info-key").html("no Vim info yet");
     $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }
+}
+
+function saveChanges() {
+  chrome.storage.sync.set({'curLayout': curLayout, 'curLesson': curLesson}, function() {
+    console.log("Saved");
+  });
 }

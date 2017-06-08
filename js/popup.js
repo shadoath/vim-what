@@ -40,8 +40,8 @@ $(document).ready(function(){
     refresh(curLayout, curLesson)
   });
   chrome.storage.sync.get(['curLayout', 'curLesson'], function(data) {
-    if (data.curLayout != "") curLayout = data.curLayout;
-    if (data.curLesson != "") curLesson = data.curLesson;
+    if (typeof(data.curLayout) != "undefined") curLayout = data.curLayout;
+    if (typeof(data.curLesson) != "undefined") curLesson = data.curLesson;
     $("#layout-choice").val(curLayout);
     $("#lesson-choice").val(curLesson);
     refresh(curLayout, curLesson);

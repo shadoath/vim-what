@@ -33,22 +33,22 @@ $(document).ready(function(){
   });
   $("#layout-choice").on("change", function(){
     curLayout = $("#layout-choice").find(":selected").val();
-    startup(curLayout, curLesson)
+    refresh(curLayout, curLesson)
   });
   $("#lesson-choice").on("change", function(){
     curLesson = $("#lesson-choice").find(":selected").val();
-    startup(curLayout, curLesson)
+    refresh(curLayout, curLesson)
   });
   chrome.storage.sync.get(['curLayout', 'curLesson'], function(data) {
-    curLayout = data.curLayout;
-    curLesson = data.curLesson;
+    if (data.curLayout != "") curLayout = data.curLayout;
+    if (data.curLesson != "") curLesson = data.curLesson;
     $("#layout-choice").val(curLayout);
     $("#lesson-choice").val(curLesson);
-    startup(curLayout, curLesson);
+    refresh(curLayout, curLesson);
   });
 });
 
-function startup(layout, lesson){
+function refresh(layout, lesson){
   loadKeyboard(layout);
   if(curLesson == "11"){
     $(".info-key").html("<img src='/images/about/all.png'>");
@@ -57,7 +57,7 @@ function startup(layout, lesson){
     loadLesson(parseInt(lesson));
     $(".info-key").html("<img src='/images/about/lesson_"+lesson+".png'>");
   }
-
+  saveChanges();
 }
 
 function loadLesson(lesson){
@@ -72,7 +72,6 @@ function loadLesson(lesson){
       });
     }
   });
-  saveChanges();
 }
 
 function loadKeyboard(keyboard){

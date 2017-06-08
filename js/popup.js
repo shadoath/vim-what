@@ -12,7 +12,7 @@
 var layouts   = {};
 var lessons   = {};
 var curLayout = "colemack";
-var curLesson = "0";
+var curLesson = "11";
 var key_info  = {};
 
 $(document).ready(function(){

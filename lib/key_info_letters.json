@@ -92,12 +92,12 @@
   "j": {
     "title": "lowercase",
     "image": "/images/letters/j.png",
-    "text": ""
+    "text": "jj = end"
   },
   "J": {
     "title": "UPPERCASE",
     "image": "/images/letters/jj.png",
-    "text": ""
+    "text": "Join two lines."
   },
   "k": {
     "title": "lowercase",

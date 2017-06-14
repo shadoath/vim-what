@@ -113,7 +113,12 @@ function infoblocks(){
     console.log(event.key);
     console.log(key);
     if(event.key == "Enter"){
-      console.log($("#query")[0].value);
+      map = $("#query")[0].value.split('');
+      console.log(map);
+      $(".info-key").html(map);
+      for (i=0; i<map.length; i++){
+        loadImage(map[i], true);
+      }
       $("#query")[0].value = "";
     }
     else if(event.key != "Shift"){
@@ -128,15 +133,25 @@ function loadInfo(key, shifted){
     key = key.toUpperCase();
   }
   if(typeof key_info[key] != 'undefined'){
-    if(typeof key_info[key]["image"] != 'undefined'){
-      $(".info-key").html("<img src='"+key_info[key]["image"]+"'><br>");
-    }else{
-      $(".info-key").html(key+"<br>");
-    }
+    loadImage(key);
     $(".info-key").append(key_info[key]["text"]);
   }else{
     $(".info-key").html("no Vim info yet");
     $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
+  }
+}
+
+function loadImage(key, append = false){
+  info = "";
+  if(typeof key_info[key] != 'undefined' && typeof key_info[key]["image"] != 'undefined'){
+    info = "<img src='"+key_info[key]["image"]+"'><br>";
+  }else{
+    info = key+"<br>";
+  }
+  if(append){
+    $(".info-key").append(info.slice(0,-4));
+  }else{
+    $(".info-key").html(info);
   }
 }
 

@@ -1,0 +1,83 @@
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-size: 100%;
+  background-color:eee;
+  margin: 0px;
+}
+
+.layout-select {
+  float: left;
+  width: 30%;
+  display: grid;
+}
+#query {
+  width: 50%;
+}
+.lesson-select {
+  float: right;
+}
+
+.keyboard-base{
+  float: left;
+  margin:5px auto;
+  width:800px;
+  height:380px;
+  background-color:#999;
+  border-radius:125px;
+}
+
+.keyboard { border:10px; }
+
+.keyboardRow {
+  position:relative;
+  text-align:center;
+  top:50px;
+}
+.shifted {
+  margin-bottom: -11px;
+}
+
+.key {
+  /* background-color:#fff; */
+  display:inline-block;
+  min-width:15px;
+  /* border:1px solid #eee; */
+  margin-right:1px;
+  margin-left:1px;
+  /* padding:6px 12px; */
+  margin-bottom:10px;
+  border-radius:5px;
+  /* -webkit-box-shadow: 0 0 2px 1px rgba(0,0,0,0.3); */
+  /* box-shadow: 0 0 2px 1px rgba(0,0,0,0.3); */
+  /* box-shadow: 0px 2px 3px #222; */
+}
+.key img {
+  max-width: 56px;
+}
+
+.key:hover {
+  position:relative;
+  background-color:#e0e0e0;
+  cursor:pointer;
+  box-shadow: 0px 1px 1px #eee;
+  top:1px;
+}
+.faded {
+  opacity: .1;
+}
+.some-faded {
+  opacity: .4;
+}
+
+.key-value{
+  display: none;
+}
+
+.info-key{
+  float: left;
+  width: auto;
+  margin-right: 30px;
+}
+.info img {
+  max-width: 100%;
+}

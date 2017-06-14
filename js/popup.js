@@ -109,14 +109,21 @@ function infoblocks(){
   });
 
   $(document).on('keyup', function(event, key) {
-    if(event['key'] != "Shift"){
-      loadInfo(event['key'], event.shiftKey);
+    console.log(event);
+    console.log(event.key);
+    console.log(key);
+    if(event.key == "Enter"){
+      console.log($("#query")[0].value);
+      $("#query")[0].value = "";
+    }
+    else if(event.key != "Shift"){
+      loadInfo(event.key, event.shiftKey);
     }
   });
 }
 
 function loadInfo(key, shifted){
-  console.log("loadInfo: "+key);
+  console.log(key);
   if(shifted == true){
     key = key.toUpperCase();
   }
@@ -131,6 +138,11 @@ function loadInfo(key, shifted){
     $(".info-key").html("no Vim info yet");
     $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }
+}
+
+function loadCombo(value) {
+  console.log(value);
+  //TODO load from mappings
 }
 
 function saveChanges() {

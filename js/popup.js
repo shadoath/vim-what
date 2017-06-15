@@ -1,13 +1,6 @@
-// Copyright (c) 2014 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 /**
- * Get the current URL.
- *
- * @param {function(string)} callback - called when the URL of the current tab
- *   is found.
- *
+ * Vim What?
+ * Learn vim with style
  */
 var layouts   = {};
 var lessons   = {};
@@ -113,13 +106,15 @@ function infoblocks(){
     console.log(event.key);
     console.log(key);
     if(event.key == "Enter"){
-      map = $("#query")[0].value.split('');
-      console.log(map);
+      map_query = $("#query")[0].value;
+      console.log(map_query);
+      map = map_query.split('');
       $(".info-key").html(map);
       for (i=0; i<map.length; i++){
         loadImage(map[i], true);
       }
       $("#query")[0].value = "";
+      $("#query")[0].placeholder = map_query;
     }
     else if(event.key != "Shift"){
       loadInfo(event.key, event.shiftKey);

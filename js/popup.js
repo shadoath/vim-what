@@ -103,18 +103,28 @@ function infoblocks(){
 
   $(document).on('keyup', function(event, key) {
     console.log(event);
-    console.log(event.key);
-    console.log(key);
+    // console.log(event.key);
     if(event.key == "Enter"){
       map_query = $("#query")[0].value;
       console.log(map_query);
       map = map_query.split('');
-      $(".info-key").html(map);
-      for (i=0; i<map.length; i++){
-        loadImage(map[i], true);
-      }
       $("#query")[0].value = "";
       $("#query")[0].placeholder = map_query;
+      $(".info-key").html(map_query+"<br>");
+      if(event.shiftKey){
+        //Load map into editable window
+        console.log("Shift ENTER");
+        $(".info-key").append("<textarea id='update-map' rows='6' cols='50'>");
+        $(".info-key").append("<br><input type='submit'>");
+        $("#update-map").html("VALUE OF MAP HERE");
+
+      }else{
+        //Load Map
+        for (i=0; i<map.length; i++){
+          loadImage(map[i], true);
+        }
+
+      }
     }
     else if(event.key != "Shift"){
       loadInfo(event.key, event.shiftKey);

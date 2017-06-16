@@ -7,8 +7,12 @@ body {
 
 .layout-select {
   float: left;
-  width: 30%;
+  width: 20%;
   display: grid;
+}
+.mapping-select {
+  float: left;
+  margin-left: 18%;
 }
 .lesson-select {
   float: right;
@@ -71,10 +75,26 @@ body {
 }
 
 .info-key{
+  width: 100%;
   float: left;
-  width: auto;
-  margin-right: 30px;
+}
+.info-key span{
+  margin-left: 2%;
 }
 .info img {
   max-width: 100%;
+}
+button {
+  margin-left: 2%;
+  margin-right: 1%;
+  width: 30%;
+}
+textarea {
+  width: 96%;
+  margin: 0px auto;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.red {
+  color:red;
 }

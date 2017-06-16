@@ -39,6 +39,7 @@ $(document).ready(function(){
     $("#lesson-choice").val(curLesson);
     refresh(curLayout, curLesson);
   });
+  $("#query").focus();
 });
 
 function refresh(layout, lesson){
@@ -110,19 +111,53 @@ function infoblocks(){
       map = map_query.split('');
       $("#query")[0].value = "";
       $("#query")[0].placeholder = map_query;
-      $(".info-key").html(map_query+"<br>");
+      $(".info-key").html("<span>"+map_query+"</span><br>");
       if(event.shiftKey){
         //Load map into editable window
-        console.log("Shift ENTER");
+        $(document).unbind("keyup");
+        $( ".key").unbind("click");
         $(".info-key").append("<textarea id='update-map' rows='6' cols='50'>");
-        $(".info-key").append("<br><input type='submit'>");
-        $("#update-map").html("VALUE OF MAP HERE");
-
+        $(".info-key").append("<br><button id='save-map'   type='button'>Save</button>");
+        $(".info-key").append("<button id='cancel-map' type='button'>Cancel</button>");
+        $(".info-key").append("<button id='delete-map' type='button'>Delete</button>");
+        chrome.storage.sync.get(map_query, function(data) {
+          if (typeof(data[map_query]) != "undefined"){
+            $("#update-map").html(data[map_query]);
+          }else{
+            $("#update-map").attr("placeholder", "Type your map here");
+          }
+        });
+        $("#save-map").on("click", function(){
+          newMapValue = $("#update-map").val();
+          chrome.storage.sync.set({[map_query]: newMapValue}, function() {
+            $(".info-key").html(map_query+" saved to:<br>"+newMapValue);
+            console.log("Saved");
+          });
+          infoblocks();
+        });
+        $("#cancel-map").on("click", function(){
+          $(".info-key").html("Canceled");
+          infoblocks();
+        });
+        $("#delete-map").on("click", function(){
+          chrome.storage.sync.remove([map_query], function() {
+            $(".info-key").html("<span>"+map_query+"</span><br><span class='red'>DELETED</span>");
+            console.log("Deleted map");
+          });
+          infoblocks();
+        });
       }else{
         //Load Map
         for (i=0; i<map.length; i++){
           loadImage(map[i], true);
         }
+        chrome.storage.sync.get(map_query, function(data) {
+          if (typeof(data[map_query]) != "undefined"){
+            $(".info-key").append(data[map_query]);
+          }else{
+            $(".info-key").append("<br>No map found, use Shift + Enter to create.");
+          }
+        });
 
       }
     }
@@ -167,6 +202,6 @@ function loadCombo(value) {
 
 function saveChanges() {
   chrome.storage.sync.set({'curLayout': curLayout, 'curLesson': curLesson}, function() {
-    console.log("Saved");
+    console.log("Saved layout/lesson");
   });
 }

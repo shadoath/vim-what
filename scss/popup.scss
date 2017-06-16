@@ -10,9 +10,6 @@ body {
   width: 30%;
   display: grid;
 }
-#query {
-  width: 50%;
-}
 .lesson-select {
   float: right;
 }
@@ -74,10 +71,19 @@ body {
 }
 
 .info-key{
-  float: left;
-  width: auto;
-  margin-right: 30px;
+  width: 100%;
 }
 .info img {
   max-width: 100%;
+}
+button {
+  margin-left: 2%;
+  margin-right: 1%;
+  width: 30%;
+}
+textarea {
+  width: 96%;
+  margin: 0px auto;
+  margin-left: 2%;
+  margin-right: 2%;
 }

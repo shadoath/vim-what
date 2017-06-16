@@ -112,7 +112,7 @@ function infoblocks(){
       $("#query")[0].value = "";
       $("#query")[0].placeholder = map_query;
       $(".info-key").html("<span>"+map_query+"</span><br>");
-      if(event.shiftKey){
+      if(event.shiftKey && map.length >= 2){
         //Load map into editable window
         $(document).unbind("keyup");
         $( ".key").unbind("click");
@@ -148,16 +148,20 @@ function infoblocks(){
         });
       }else{
         //Load Map
+        chrome.storage.sync.get(map_query, function(data) {
+          if (typeof(data[map_query]) != "undefined"){
+            $(".info-key").append('<pre>'+data[map_query]+'</pre>');
+          }else{
+            if (map.length >= 2) {
+              $(".info-key").append("<br>No map found, use Shift + Enter to create.");
+            }else{
+              $(".info-key").append("<br>A mapping must be at least two characters.");
+            }
+          }
+        });
         for (i=0; i<map.length; i++){
           loadImage(map[i], true);
         }
-        chrome.storage.sync.get(map_query, function(data) {
-          if (typeof(data[map_query]) != "undefined"){
-            $(".info-key").append(data[map_query]);
-          }else{
-            $(".info-key").append("<br>No map found, use Shift + Enter to create.");
-          }
-        });
 
       }
     }

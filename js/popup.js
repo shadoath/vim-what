@@ -7,8 +7,28 @@ var lessons   = {};
 var curLayout = "colemack";
 var curLesson = "11";
 var key_info  = {};
+var maps      = {};
+var nmaps     = {};
 
 $(document).ready(function(){
+// $.get("/lib/my_sorted_maps.csv", function(data) {
+//       var items = data.split('\n');
+//       console.log(items[0]);
+//       // $.getJSON(data, function(json) {
+//       //   console.log(json);
+
+//       // });
+//   });
+  //
+  console.log(1);
+  $.getJSON("/lib/my_sorted_maps.json", function(json) {
+    console.log(json);
+    $.extend(maps, json);
+    $(json).each(function(layer, value){
+
+    })
+  });
+  console.log(2);
   $.getJSON("/lib/key_info_symbols.json", function(json) {
     $.extend(key_info, json);
   });

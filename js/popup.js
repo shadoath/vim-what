@@ -7,28 +7,36 @@ var lessons   = {};
 var curLayout = "colemack";
 var curLesson = "11";
 var key_info  = {};
-var maps      = {};
-var nmaps     = {};
+var maps  = {
+  // " ": {},  // ""	Normal, Visual and Operator-pending
+  "n": {},  // "n"	Normal
+  "v": {},  // "v"	Visual (including Select)
+  "o": {},  // "o"	Operator-pending
+  "i": {},  // "i"	Insert
+  "c": {},  // "c"	Cmd-line
+  "s": {},  // "s"	Select
+  "x": {},  // "x"	Visual
+  "l": {},  // "l"	langmap |language-mapping|
+};
 
 $(document).ready(function(){
-// $.get("/lib/my_sorted_maps.csv", function(data) {
-//       var items = data.split('\n');
-//       console.log(items[0]);
-//       // $.getJSON(data, function(json) {
-//       //   console.log(json);
-
-//       // });
-//   });
-  //
-  console.log(1);
   $.getJSON("/lib/my_sorted_maps.json", function(json) {
-    console.log(json);
-    $.extend(maps, json);
     $(json).each(function(layer, value){
-
+      mode = value[0];
+      key  = value[1];
+      map  = value[2];
+      switch(mode) {
+        case " ":
+          $.extend(maps["n"], {[key]: map});
+          $.extend(maps["v"], {[key]: map});
+          $.extend(maps["o"], {[key]: map});
+          break;
+        default:
+          $.extend(maps[""+mode], {[key]: map});
+          break;
+      }
     })
   });
-  console.log(2);
   $.getJSON("/lib/key_info_symbols.json", function(json) {
     $.extend(key_info, json);
   });
@@ -128,67 +136,78 @@ function infoblocks(){
     if(event.key == "Enter"){
       map_query = $("#query")[0].value;
       console.log(map_query);
-      map = map_query.split('');
       $("#query")[0].value = "";
       $("#query")[0].placeholder = map_query;
       $(".info-key").html("<span>"+map_query+"</span><br>");
-      if(event.shiftKey && map.length >= 2){
-        //Load map into editable window
-        $(document).unbind("keyup");
-        $( ".key").unbind("click");
-        $(".info-key").append("<textarea id='update-map' rows='6' cols='50'>");
-        $(".info-key").append("<br><button id='save-map'   type='button'>Save</button>");
-        $(".info-key").append("<button id='cancel-map' type='button'>Cancel</button>");
-        $(".info-key").append("<button id='delete-map' type='button'>Delete</button>");
-        chrome.storage.sync.get(map_query, function(data) {
-          if (typeof(data[map_query]) != "undefined"){
-            $("#update-map").html(data[map_query]);
-          }else{
-            $("#update-map").attr("placeholder", "Type your map here");
-          }
-        });
-        $("#save-map").on("click", function(){
-          newMapValue = $("#update-map").val();
-          chrome.storage.sync.set({[map_query]: newMapValue}, function() {
-            $(".info-key").html(map_query+" saved to:<br>"+newMapValue);
-            console.log("Saved");
-          });
-          infoblocks();
-        });
-        $("#cancel-map").on("click", function(){
-          $(".info-key").html("Canceled");
-          infoblocks();
-        });
-        $("#delete-map").on("click", function(){
-          chrome.storage.sync.remove([map_query], function() {
-            $(".info-key").html("<span>"+map_query+"</span><br><span class='red'>DELETED</span>");
-            console.log("Deleted map");
-          });
-          infoblocks();
-        });
+      if(event.shiftKey){
+        mapChange(map_query, map);
       }else{
-        //Load Map
-        chrome.storage.sync.get(map_query, function(data) {
-          if (typeof(data[map_query]) != "undefined"){
-            $(".info-key").append('<pre>'+data[map_query]+'</pre>');
-          }else{
-            if (map.length >= 2) {
-              $(".info-key").append("<br>No map found, use Shift + Enter to create.");
-            }else{
-              $(".info-key").append("<br>A mapping must be at least two characters.");
-            }
-          }
-        });
-        for (i=0; i<map.length; i++){
-          loadImage(map[i], true);
-        }
-
+        mapSearch(map_query, map);
       }
     }
     else if(event.key != "Shift"){
       loadInfo(event.key, event.shiftKey);
     }
   });
+}
+
+// Map lookup
+function mapSearch(map_query){
+  map_split = map_query.split('');
+  map_mode  = $("#map-mode-choice").find(":selected").val();
+  chrome.storage.sync.get(map_query, function(data) {
+    if (typeof(data[map_query]) != "undefined"){
+      $(".info-key").append('<pre>'+data[map_query]+'</pre>');
+    }else{
+      if (map_split.length >= 2) {
+        $(".info-key").append("<br>No map found, use Shift + Enter to create.");
+      }else{
+        $(".info-key").append("<br>A mapping must be at least two characters.");
+      }
+    }
+  });
+  for (i=0; i<map_split.length; i++){
+    loadImage(map_split[i], true);
+  }
+}
+
+// Load map into editable window
+function mapChange(map_query){
+  map_split = map_query.split('');
+  map_mode  = $("#map-mode-choice").find(":selected").val();
+  $(document).unbind("keyup");
+  $( ".key").unbind("click");
+  $(".info-key").append("<textarea id='update-map' rows='6' cols='50'>");
+  $(".info-key").append("<br><button id='save-map'   type='button'>Save</button>");
+  $(".info-key").append("<button id='cancel-map' type='button'>Cancel</button>");
+  $(".info-key").append("<button id='delete-map' type='button'>Delete</button>");
+  chrome.storage.sync.get(map_query, function(data) {
+    if (typeof(data[map_query]) != "undefined"){
+      $("#update-map").html(data[map_query]);
+    }else{
+      $("#update-map").attr("placeholder", "Type your map here");
+    }
+  });
+  $("#save-map").on("click", function(){
+    newMapValue = $("#update-map").val();
+    chrome.storage.sync.set({[map_query]: newMapValue}, function() {
+      $(".info-key").html(map_query+" saved to:<br>"+newMapValue);
+      console.log("Saved");
+    });
+    infoblocks();
+  });
+  $("#cancel-map").on("click", function(){
+    $(".info-key").html("Canceled");
+    infoblocks();
+  });
+  $("#delete-map").on("click", function(){
+    chrome.storage.sync.remove([map_query], function() {
+      $(".info-key").html("<span>"+map_query+"</span><br><span class='red'>DELETED</span>");
+      console.log("Deleted map");
+    });
+    infoblocks();
+  });
+
 }
 
 function loadInfo(key, shifted){

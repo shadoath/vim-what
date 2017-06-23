@@ -8,7 +8,6 @@ var curLayout = "colemack";
 var curLesson = "11";
 var key_info  = {};
 var maps  = {
-  // " ": {},  // ""	Normal, Visual and Operator-pending
   "n": {},  // "n"	Normal
   "v": {},  // "v"	Visual (including Select)
   "o": {},  // "o"	Operator-pending
@@ -155,19 +154,42 @@ function infoblocks(){
 function mapSearch(map_query){
   map_split = map_query.split('');
   map_mode  = $("#map-mode-choice").find(":selected").val();
-  chrome.storage.sync.get(map_query, function(data) {
-    if (typeof(data[map_query]) != "undefined"){
-      $(".info-key").append('<pre>'+data[map_query]+'</pre>');
+  mode_name = $("#map-mode-choice").find(":selected").html();
+  my_sorted_maps = "undefined"
+  if(map_query == ""){
+    map_split = map_query.split('');
+    $(".info-key").append('<b>'+mode_name+": "+'</b>');
+    $.each( map_mode.split(''), function( i, mode) {
+      $(".info-key").append('<b>'+mode+" maps: "+'</b>');
+      $.each( maps[mode], function( key, value ) {
+        $(".info-key").append('<pre>'+key + ": " + value+'</pre>');
+      });
+    });
+    // $(".info-key").append('<b>'+mode_name+" maps: "+'</b>');
+    // $.each( maps[map_mode], function( key, value ) {
+    //   $(".info-key").append('<pre>'+key + ": " + value+'</pre>');
+    // });
+  }else{
+    if(map_mode == "nvo"){
+      my_sorted_maps  = "n maps: "+maps["n"][map_query]
+      my_sorted_maps += "<br>v maps: "+maps["v"][map_query]
+      my_sorted_maps += "<br>o maps: "+maps["o"][map_query]
     }else{
-      if (map_split.length >= 2) {
-        $(".info-key").append("<br>No map found, use Shift + Enter to create.");
-      }else{
-        $(".info-key").append("<br>A mapping must be at least two characters.");
-      }
+      my_sorted_maps = maps[map_mode][map_query]
+
     }
-  });
-  for (i=0; i<map_split.length; i++){
-    loadImage(map_split[i], true);
+    chrome.storage.sync.get(map_query, function(data) {
+      if (typeof(data[map_query]) != "undefined"){
+        $(".info-key").append('<pre>'+data[map_query]+'</pre>');
+      }else if(my_sorted_maps != "undefined"){
+        $(".info-key").append('<pre>'+my_sorted_maps+'</pre>');
+      }else{
+        $(".info-key").append("<br>No map found, use Shift + Enter to create.");
+      }
+    });
+    for (i=0; i<map_split.length; i++){
+      loadImage(map_split[i], true);
+    }
   }
 }
 

@@ -12,72 +12,72 @@
   "b": {
     "title": "lowercase",
     "image": "/images/letters/b.png",
-    "text": ""
+    "text": "[count] words backward.  |exclusive| motion."
   },
   "B": {
     "title": "UPPERCASE",
     "image": "/images/letters/bb.png",
-    "text": ""
+    "text": "[count] WORDS backward.  |exclusive| motion."
   },
   "c": {
     "title": "lowercase",
     "image": "/images/letters/c.png",
-    "text": ""
+    "text": "[\"x]c{motion}<br>Delete {motion}text [into register x] and start insert."
   },
   "C": {
     "title": "UPPERCASE",
     "image": "/images/letters/cc.png",
-    "text": ""
+    "text": "[\"x]C<br>Delete from the cursor position to the end of the line and [count]-1 more lines [into register x], and start insert.<br>Synonym for c$ (not |linewise|)."
   },
   "d": {
     "title": "lowercase",
     "image": "/images/letters/d.png",
-    "text": ""
+    "text": "[\"x]d{motion}<br>Delete text that {motion} moves over [into register x]."
   },
   "D": {
     "title": "UPPERCASE",
     "image": "/images/letters/dd.png",
-    "text": ""
+    "text": "[\"x]D<br>Delete the characters under the cursor until the end of the line and [count]-1 more lines [into register x];<br>Synonym for \"d$\"."
   },
   "e": {
     "title": "lowercase",
     "image": "/images/letters/e.png",
-    "text": ""
+    "text": "Forward to the end of word [count] |inclusive|.  Does not stop in an empty line."
   },
   "E": {
     "title": "UPPERCASE",
     "image": "/images/letters/ee.png",
-    "text": ""
+    "text": "Forward to the end of WORD [count] |inclusive|.  Does not stop in an empty line."
   },
   "f": {
     "title": "lowercase",
     "image": "/images/letters/f.png",
-    "text": ""
+    "text": " f{char}<br>  To [count]'th occurrence of {char} to the right.<br>The cursor is placed on {char} |inclusive|.<br> {char} can be entered as a digraph |digraph-arg|.  When 'encoding' is set to Unicode, composing characters may be used, see |utf-8-char-arg|.  |:lmap| mappings apply to {char}.<br>The CTRL-^ command in Insert mode can be used to switch this on/off |i_CTRL-^|."
   },
   "F": {
     "title": "UPPERCASE",
     "image": "/images/letters/ff.png",
-    "text": ""
+    "text": "F{char}<br>To the [count]'th occurrence of {char} to the left.<br> The cursor is placed on {char} |exclusive|.<br> {char} can be entered like with the |f| command."
   },
   "g": {
     "title": "lowercase",
     "image": "/images/letters/g.png",
-    "text": ""
+    "text": "A lot of Vim power found here! check out :help g"
   },
   "G": {
     "title": "UPPERCASE",
     "image": "/images/letters/gg.png",
-    "text": ""
+    "text": "Goto line [count], default last line, on the first non-blank character |linewise|.<br> If 'startofline' not set, keep the same column.<br> G is a one of |jump-motions|."
   },
   "h": {
     "title": "lowercase",
     "image": "/images/letters/h.png",
-    "text": ""
+    "text": "Move left"
   },
   "H": {
     "title": "UPPERCASE",
     "image": "/images/letters/hh.png",
-    "text": ""
+    "text": "To line [count] from top (Home) of window (default: first line on the window) on the first non-blank character |linewise|.<br> See also 'startofline' option.  Cursor is adjusted for 'scrolloff' option."
   },
   "i": {
     "title": "lowercase",

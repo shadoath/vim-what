@@ -10,9 +10,12 @@ body {
   width: 20%;
   display: grid;
 }
-.mapping-select {
+.map-mode-select{
   float: left;
   margin-left: 18%;
+}
+.mapping-select {
+  float: left;
 }
 .lesson-select {
   float: right;

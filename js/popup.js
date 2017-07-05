@@ -17,6 +17,8 @@ var maps  = {
   "x": {},  // "x"	Visual
   "l": {},  // "l"	langmap |language-mapping|
 };
+var append = true;
+
 
 $(document).ready(function(){
   $.getJSON("/lib/my_sorted_maps.json", function(json) {
@@ -43,6 +45,9 @@ $(document).ready(function(){
     $.extend(key_info, json);
   });
   $.getJSON("/lib/key_info_letters.json", function(json) {
+    $.extend(key_info, json);
+  });
+  $.getJSON("/lib/key_links.json", function(json) {
     $.extend(key_info, json);
   });
   $.getJSON("/lib/lessons.json", function(json) {
@@ -137,11 +142,11 @@ function infoblocks(){
       console.log(map_query);
       $("#query")[0].value = "";
       $("#query")[0].placeholder = map_query;
-      $(".info-key").html("<span>"+map_query+"</span><br>");
+      // $(".info-key").html("<span>"+map_query+"</span><br>");
       if(event.shiftKey){
-        mapChange(map_query, map);
+        mapChange(map_query);
       }else{
-        mapSearch(map_query, map);
+        mapSearch(map_query);
       }
     }
     else if(event.key != "Shift"){
@@ -152,11 +157,17 @@ function infoblocks(){
 
 // Map lookup
 function mapSearch(map_query){
+  console.log("mapSearch");
+  console.log("map_query: "+map_query);
+
+  info = "";
+  $(".info-key").html("");
   map_split = map_query.split('');
   map_mode  = $("#map-mode-choice").find(":selected").val();
   mode_name = $("#map-mode-choice").find(":selected").html();
   my_sorted_maps = "undefined"
   if(map_query == ""){
+    console.log("mapSearch EMPTY");
     map_split = map_query.split('');
     $(".info-key").append('<b>'+mode_name+": "+'</b>');
     $.each( map_mode.split(''), function( i, mode) {
@@ -176,8 +187,11 @@ function mapSearch(map_query){
       my_sorted_maps += "<br>o maps: "+maps["o"][map_query]
     }else{
       my_sorted_maps = maps[map_mode][map_query]
-
     }
+    for (i=0; i<map_split.length; i++){
+      loadImage(map_split[i]);
+    }
+    $(".info-key").append(info);
     chrome.storage.sync.get(map_query, function(data) {
       if (typeof(data[map_query]) != "undefined"){
         $(".info-key").append('<pre>'+data[map_query]+'</pre>');
@@ -187,9 +201,6 @@ function mapSearch(map_query){
         $(".info-key").append("<br>No map found, use Shift + Enter to create.");
       }
     });
-    for (i=0; i<map_split.length; i++){
-      loadImage(map_split[i], true);
-    }
   }
 }
 
@@ -234,29 +245,57 @@ function mapChange(map_query){
 
 function loadInfo(key, shifted){
   console.log(key);
+  info = "";
   if(shifted == true){
     key = key.toUpperCase();
   }
   if(typeof key_info[key] != 'undefined'){
-    loadImage(key);
-    $(".info-key").append(key_info[key]["text"]);
+    loadTitle(key);
+    loadImage(key, true);
+    loadText(key);
+    $(".info-key").html(info);
   }else{
     $(".info-key").html("no Vim info yet");
-    $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
+    $(".info-key").append("<br><br>Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }
+  $(".link").on("click", function(){
+    console.log("LINK"+this.innerHTML);
+    loadInfo(this.innerHTML);
+  });
+}
+
+function loadTitle(key){
+    if(typeof key_info[key]["title"] != 'undefined'){
+      console.log(key_info[key]["title"]);
+      info = "<p>"+key_info[key]["title"]+"</p>";
+    }
+    else{
+      info = key+"<br>";
+    }
+}
+
+function loadText(key){
+  var text  = key_info[key]["text"]
+  var pipe  = new RegExp(/\|(.*)\|/gi);
+  var links = pipe.exec(text);
+  if(links != null){
+    links.shift();
+    $(links).each(function(name, value){
+      if(typeof key_info[value] != 'undefined'){
+        var link = "<span class='link'>"+value+"</span>";
+        text = text.replace(value, link);
+      }
+    })
+  }
+  info += text
 }
 
 function loadImage(key, append = false){
-  info = "";
   if(typeof key_info[key] != 'undefined' && typeof key_info[key]["image"] != 'undefined'){
-    info = "<img src='"+key_info[key]["image"]+"'><br>";
-  }else{
-    info = key+"<br>";
-  }
-  if(append){
-    $(".info-key").append(info.slice(0,-4));
-  }else{
-    $(".info-key").html(info);
+    info += "<img src='"+key_info[key]["image"]+"'>";
+    if (append){
+      info += "<br>"
+    }
   }
 }
 

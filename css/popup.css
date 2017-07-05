@@ -23,11 +23,11 @@ body {
 
 .keyboard-base{
   float: left;
-  margin:5px auto;
+  margin-top:5px auto;
   width:800px;
   height:380px;
   background-color:#999;
-  border-radius:125px;
+  border-radius:74px;
 }
 
 .keyboard { border:10px; }
@@ -57,6 +57,7 @@ body {
 }
 .key img {
   max-width: 56px;
+  padding-bottom: 3px;
 }
 
 .key:hover {
@@ -65,6 +66,15 @@ body {
   cursor:pointer;
   box-shadow: 0px 1px 1px #eee;
   top:1px;
+}
+.link {
+  margin-left:0 !important;
+  color:blue;
+  font-weight:600;
+}
+.link:hover {
+  background-color:#e0e0e0;
+  cursor:pointer;
 }
 .faded {
   opacity: .1;
@@ -83,6 +93,10 @@ body {
 }
 .info-key span{
   margin-left: 2%;
+}
+.info-key p{
+  font-weight:600;
+
 }
 .info img {
   max-width: 100%;

@@ -1,0 +1,10 @@
+{
+  "inclusive": {
+    "title": "Inclusive or Exclusive",
+    "text": " A character motion is either inclusive or exclusive.<br>  When inclusive, the start and end position of the motion are included in the operation.<br>  When exclusive, the last character towards the end of the buffer is not included. <br> Linewise motions always include the start and end position."
+  },
+  "exclusive": {
+    "title": "Inclusive or Exclusive",
+    "text": " A character motion is either inclusive or exclusive.<br>  When inclusive, the start and end position of the motion are included in the operation.<br>  When exclusive, the last character towards the end of the buffer is not included. <br> Linewise motions always include the start and end position."
+  }
+}

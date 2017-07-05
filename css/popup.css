@@ -66,6 +66,15 @@ body {
   box-shadow: 0px 1px 1px #eee;
   top:1px;
 }
+.link {
+  margin-left:0 !important;
+  color:blue;
+  font-weight:600;
+}
+.link:hover {
+  background-color:#e0e0e0;
+  cursor:pointer;
+}
 .faded {
   opacity: .1;
 }
@@ -83,6 +92,10 @@ body {
 }
 .info-key span{
   margin-left: 2%;
+}
+.info-key p{
+  font-weight:600;
+
 }
 .info img {
   max-width: 100%;

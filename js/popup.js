@@ -17,6 +17,8 @@ var maps  = {
   "x": {},  // "x"	Visual
   "l": {},  // "l"	langmap |language-mapping|
 };
+var append = true;
+
 
 $(document).ready(function(){
   $.getJSON("/lib/my_sorted_maps.json", function(json) {
@@ -43,6 +45,9 @@ $(document).ready(function(){
     $.extend(key_info, json);
   });
   $.getJSON("/lib/key_info_letters.json", function(json) {
+    $.extend(key_info, json);
+  });
+  $.getJSON("/lib/key_links.json", function(json) {
     $.extend(key_info, json);
   });
   $.getJSON("/lib/lessons.json", function(json) {
@@ -188,8 +193,9 @@ function mapSearch(map_query){
       }
     });
     for (i=0; i<map_split.length; i++){
-      loadImage(map_split[i], true);
+      loadImage(map_split[i]);
     }
+    $(".info-key").append(info);
   }
 }
 
@@ -234,29 +240,62 @@ function mapChange(map_query){
 
 function loadInfo(key, shifted){
   console.log(key);
+  info = "";
   if(shifted == true){
     key = key.toUpperCase();
   }
   if(typeof key_info[key] != 'undefined'){
+    loadTitle(key);
     loadImage(key);
-    $(".info-key").append(key_info[key]["text"]);
+    loadText(key);
+    $(".info-key").html(info);
   }else{
     $(".info-key").html("no Vim info yet");
-    $(".info-key").append("Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
+    $(".info-key").append("<br><br>Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }
+  $(".link").on("click", function(){
+    console.log("LINK"+this.innerHTML);
+    loadInfo(this.innerHTML);
+  });
+}
+
+function loadTitle(key){
+    if(typeof key_info[key]["title"] != 'undefined'){
+      console.log(key_info[key]["title"]);
+      info = "<p>"+key_info[key]["title"]+"</p>";
+    }
+    else{
+      info = key+"<br>";
+    }
+}
+
+function loadText(key){
+  var text  = key_info[key]["text"]
+  var pipe  = new RegExp(/\|(.*)\|/gi);
+  var links = pipe.exec(text);
+  if(links != null){
+    links.shift();
+    $(links).each(function(name, value){
+      if(typeof key_info[value] != 'undefined'){
+        var link = "<span class='link'>"+value+"</span>";
+        text = text.replace(value, link);
+      }
+    })
+  }
+  info += text
 }
 
 function loadImage(key, append = false){
-  info = "";
   if(typeof key_info[key] != 'undefined' && typeof key_info[key]["image"] != 'undefined'){
     info = "<img src='"+key_info[key]["image"]+"'><br>";
   }else{
-    info = key+"<br>";
-  }
-  if(append){
-    $(".info-key").append(info.slice(0,-4));
-  }else{
-    $(".info-key").html(info);
+    if(typeof key_info[key]["title"] != 'undefined'){
+      console.log(key_info[key]["title"]);
+      info = "<p>"+key_info[key]["title"]+"</p>";
+    }
+    else{
+      info = key+"<br>";
+    }
   }
 }
 

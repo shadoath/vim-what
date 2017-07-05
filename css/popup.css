@@ -23,11 +23,11 @@ body {
 
 .keyboard-base{
   float: left;
-  margin:5px auto;
+  margin-top:5px auto;
   width:800px;
   height:380px;
   background-color:#999;
-  border-radius:125px;
+  border-radius:74px;
 }
 
 .keyboard { border:10px; }
@@ -57,6 +57,7 @@ body {
 }
 .key img {
   max-width: 56px;
+  padding-bottom: 3px;
 }
 
 .key:hover {

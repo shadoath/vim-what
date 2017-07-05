@@ -142,11 +142,11 @@ function infoblocks(){
       console.log(map_query);
       $("#query")[0].value = "";
       $("#query")[0].placeholder = map_query;
-      $(".info-key").html("<span>"+map_query+"</span><br>");
+      // $(".info-key").html("<span>"+map_query+"</span><br>");
       if(event.shiftKey){
-        mapChange(map_query, map);
+        mapChange(map_query);
       }else{
-        mapSearch(map_query, map);
+        mapSearch(map_query);
       }
     }
     else if(event.key != "Shift"){
@@ -157,11 +157,17 @@ function infoblocks(){
 
 // Map lookup
 function mapSearch(map_query){
+  console.log("mapSearch");
+  console.log("map_query: "+map_query);
+
+  info = "";
+  $(".info-key").html("");
   map_split = map_query.split('');
   map_mode  = $("#map-mode-choice").find(":selected").val();
   mode_name = $("#map-mode-choice").find(":selected").html();
   my_sorted_maps = "undefined"
   if(map_query == ""){
+    console.log("mapSearch EMPTY");
     map_split = map_query.split('');
     $(".info-key").append('<b>'+mode_name+": "+'</b>');
     $.each( map_mode.split(''), function( i, mode) {
@@ -181,8 +187,11 @@ function mapSearch(map_query){
       my_sorted_maps += "<br>o maps: "+maps["o"][map_query]
     }else{
       my_sorted_maps = maps[map_mode][map_query]
-
     }
+    for (i=0; i<map_split.length; i++){
+      loadImage(map_split[i]);
+    }
+    $(".info-key").append(info);
     chrome.storage.sync.get(map_query, function(data) {
       if (typeof(data[map_query]) != "undefined"){
         $(".info-key").append('<pre>'+data[map_query]+'</pre>');
@@ -192,10 +201,6 @@ function mapSearch(map_query){
         $(".info-key").append("<br>No map found, use Shift + Enter to create.");
       }
     });
-    for (i=0; i<map_split.length; i++){
-      loadImage(map_split[i]);
-    }
-    $(".info-key").append(info);
   }
 }
 
@@ -246,7 +251,7 @@ function loadInfo(key, shifted){
   }
   if(typeof key_info[key] != 'undefined'){
     loadTitle(key);
-    loadImage(key);
+    loadImage(key, true);
     loadText(key);
     $(".info-key").html(info);
   }else{
@@ -287,14 +292,9 @@ function loadText(key){
 
 function loadImage(key, append = false){
   if(typeof key_info[key] != 'undefined' && typeof key_info[key]["image"] != 'undefined'){
-    info = "<img src='"+key_info[key]["image"]+"'><br>";
-  }else{
-    if(typeof key_info[key]["title"] != 'undefined'){
-      console.log(key_info[key]["title"]);
-      info = "<p>"+key_info[key]["title"]+"</p>";
-    }
-    else{
-      info = key+"<br>";
+    info += "<img src='"+key_info[key]["image"]+"'>";
+    if (append){
+      info += "<br>"
     }
   }
 }

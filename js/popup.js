@@ -56,11 +56,11 @@ $(document).ready(function(){
   $.getJSON("/lib/layouts.json", function(json) {
     layouts = json;
   });
-  $("#layout-choice").on("change", function(){
+  $("#layout-choice").on("change click", function(){
     curLayout = $("#layout-choice").find(":selected").val();
     refresh(curLayout, curLesson)
   });
-  $("#lesson-choice").on("change", function(){
+  $("#lesson-choice").on("change click", function(){
     curLesson = $("#lesson-choice").find(":selected").val();
     refresh(curLayout, curLesson)
   });

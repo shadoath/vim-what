@@ -2,261 +2,313 @@
   "a": {
     "title": "lowercase",
     "image": "/images/letters/a.png",
+    "action": "command",
     "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
   },
   "A": {
     "title": "UPPERCASE",
     "image": "/images/letters/aa.png",
+    "action": "command",
     "text": "append at end of line"
   },
   "b": {
     "title": "lowercase",
     "image": "/images/letters/b.png",
+    "action": "motion",
     "text": "[count] words backward.  |exclusive| motion."
   },
   "B": {
     "title": "UPPERCASE",
     "image": "/images/letters/bb.png",
+    "action": "motion",
     "text": "[count] WORDS backward.  |exclusive| motion."
   },
   "c": {
     "title": "lowercase",
     "image": "/images/letters/c.png",
+    "action": "operator",
     "text": "[\"x]c{motion}<br>Delete {motion}text [into register x] and start insert."
   },
   "C": {
     "title": "UPPERCASE",
     "image": "/images/letters/cc.png",
+    "action": "command",
     "text": "[\"x]C<br>Delete from the cursor position to the end of the line and [count]-1 more lines [into register x], and start insert.<br>Synonym for c$ (not |linewise|)."
   },
   "d": {
     "title": "lowercase",
     "image": "/images/letters/d.png",
+    "action": "operator",
     "text": "[\"x]d{motion}<br>Delete text that {motion} moves over [into register x]."
   },
   "D": {
     "title": "UPPERCASE",
     "image": "/images/letters/dd.png",
+    "action": "command",
     "text": "[\"x]D<br>Delete the characters under the cursor until the end of the line and [count]-1 more lines [into register x];<br>Synonym for \"d$\"."
   },
   "e": {
     "title": "lowercase",
     "image": "/images/letters/e.png",
+    "action": "motion",
     "text": "Forward to the end of word [count] |inclusive|.  Does not stop in an empty line."
   },
   "E": {
     "title": "UPPERCASE",
     "image": "/images/letters/ee.png",
+    "action": "motion",
     "text": "Forward to the end of WORD [count] |inclusive|.  Does not stop in an empty line."
   },
   "f": {
     "title": "lowercase",
     "image": "/images/letters/f.png",
+    "action": "motion",
     "text": " f{char}<br>  To [count]'th occurrence of {char} to the right.<br>The cursor is placed on {char} |inclusive|.<br> {char} can be entered as a digraph |digraph-arg|.  When 'encoding' is set to Unicode, composing characters may be used, see |utf-8-char-arg|.  |:lmap| mappings apply to {char}.<br>The CTRL-^ command in Insert mode can be used to switch this on/off |i_CTRL-^|."
   },
   "F": {
     "title": "UPPERCASE",
     "image": "/images/letters/ff.png",
+    "action": "motion",
     "text": "F{char}<br>To the [count]'th occurrence of {char} to the left.<br> The cursor is placed on {char} |exclusive|.<br> {char} can be entered like with the |f| command."
   },
   "g": {
     "title": "lowercase",
     "image": "/images/letters/g.png",
+    "action": "extra",
     "text": "A lot of Vim power found here! check out :help g"
   },
   "G": {
     "title": "UPPERCASE",
     "image": "/images/letters/gg.png",
+    "action": "motion",
     "text": "Goto line [count], default last line, on the first non-blank character |linewise|.<br> If 'startofline' not set, keep the same column.<br> G is a one of |jump-motions|."
   },
   "h": {
     "title": "lowercase",
     "image": "/images/letters/h.png",
+    "action": "motion",
     "text": "Move left"
   },
   "H": {
     "title": "UPPERCASE",
     "image": "/images/letters/hh.png",
+    "action": "motion",
     "text": "To line [count] from top (Home) of window (default: first line on the window) on the first non-blank character |linewise|.<br> See also 'startofline' option.  Cursor is adjusted for 'scrolloff' option."
   },
   "i": {
     "title": "lowercase",
     "image": "/images/letters/i.png",
+    "action": "command",
     "text": ""
   },
   "I": {
     "title": "UPPERCASE",
     "image": "/images/letters/ii.png",
+    "action": "command",
     "text": ""
   },
   "j": {
     "title": "lowercase",
     "image": "/images/letters/j.png",
+    "action": "motion",
     "text": "jj = end"
   },
   "J": {
     "title": "UPPERCASE",
     "image": "/images/letters/jj.png",
+    "action": "command",
     "text": "Join two lines."
   },
   "k": {
     "title": "lowercase",
     "image": "/images/letters/k.png",
+    "action": "motion",
     "text": ""
   },
   "K": {
     "title": "UPPERCASE",
     "image": "/images/letters/kk.png",
+    "action": "command",
     "text": ""
   },
   "l": {
     "title": "lowercase",
     "image": "/images/letters/l.png",
+    "action": "motion",
     "text": ""
   },
   "L": {
     "title": "UPPERCASE",
     "image": "/images/letters/ll.png",
+    "action": "motion",
     "text": ""
   },
   "m": {
     "title": "lowercase",
     "image": "/images/letters/m.png",
+    "action": "command",
     "text": ""
   },
   "M": {
     "title": "UPPERCASE",
     "image": "/images/letters/mm.png",
+    "action": "motion",
     "text": ""
   },
   "n": {
     "title": "lowercase",
     "image": "/images/letters/n.png",
+    "action": "motion",
     "text": ""
   },
   "N": {
     "title": "UPPERCASE",
     "image": "/images/letters/nn.png",
+    "action": "motion",
     "text": ""
   },
   "o": {
     "title": "lowercase",
     "image": "/images/letters/o.png",
+    "action": "command",
     "text": ""
   },
   "O": {
     "title": "UPPERCASE",
     "image": "/images/letters/oo.png",
+    "action": "command",
     "text": ""
   },
   "p": {
     "title": "lowercase",
     "image": "/images/letters/p.png",
+    "action": "command",
     "text": ""
   },
   "P": {
     "title": "UPPERCASE",
     "image": "/images/letters/pp.png",
+    "action": "command",
     "text": ""
   },
   "q": {
     "title": "lowercase",
     "image": "/images/letters/q.png",
+    "action": "command",
     "text": ""
   },
   "Q": {
     "title": "UPPERCASE",
     "image": "/images/letters/qq.png",
+    "action": "command",
     "text": ""
   },
   "r": {
     "title": "lowercase",
     "image": "/images/letters/r.png",
+    "action": "command",
     "text": ""
   },
   "R": {
     "title": "UPPERCASE",
     "image": "/images/letters/rr.png",
+    "action": "command",
     "text": ""
   },
   "s": {
     "title": "lowercase",
     "image": "/images/letters/s.png",
+    "action": "command",
     "text": ""
   },
   "S": {
     "title": "UPPERCASE",
     "image": "/images/letters/ss.png",
+    "action": "command",
     "text": ""
   },
   "t": {
     "title": "lowercase",
     "image": "/images/letters/t.png",
+    "action": "motion",
     "text": ""
   },
   "T": {
     "title": "UPPERCASE",
     "image": "/images/letters/tt.png",
+    "action": "motion",
     "text": ""
   },
   "u": {
     "title": "lowercase",
     "image": "/images/letters/u.png",
+    "action": "command",
     "text": ""
   },
   "U": {
     "title": "UPPERCASE",
     "image": "/images/letters/uu.png",
+    "action": "command",
     "text": ""
   },
   "v": {
     "title": "lowercase",
     "image": "/images/letters/v.png",
+    "action": "command",
     "text": ""
   },
   "V": {
     "title": "UPPERCASE",
     "image": "/images/letters/vv.png",
+    "action": "command",
     "text": ""
   },
   "w": {
     "title": "lowercase",
     "image": "/images/letters/w.png",
+    "action": "motion",
     "text": ""
   },
   "W": {
     "title": "UPPERCASE",
     "image": "/images/letters/ww.png",
+    "action": "motion",
     "text": ""
   },
   "x": {
     "title": "lowercase",
     "image": "/images/letters/x.png",
+    "action": "command",
     "text": ""
   },
   "X": {
     "title": "UPPERCASE",
     "image": "/images/letters/xx.png",
+    "action": "command",
     "text": ""
   },
   "y": {
     "title": "lowercase",
     "image": "/images/letters/y.png",
+    "action": "operator",
     "text": ""
   },
   "Y": {
     "title": "UPPERCASE",
     "image": "/images/letters/yy.png",
+    "action": "command",
     "text": ""
   },
   "z": {
     "title": "lowercase",
     "image": "/images/letters/z.png",
+    "action": "extra",
     "text": ""
   },
   "Z": {
     "title": "UPPERCASE",
     "image": "/images/letters/zz.png",
+    "action": "extra",
     "text": ""
   }
 }

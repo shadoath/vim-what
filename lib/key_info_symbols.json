@@ -142,7 +142,7 @@
   "'": {
     "title": "Single Quote",
     "image": "/images/symbols/single_quote.png",
-    "text": ""
+    "text": "'< & '> start/end of visual selection<br> '[ & '] - start/end of last change or yank<br> '. - position of where last change was made<br> '^ - position of cursor when last Vim last left insert mode - This is how gi command works<br> '' - position before last jump (Super useful!). See :h ''"
   },
   ";": {
     "title": "Semicolon",

@@ -13,4 +13,6 @@ Some letter info taken from [alexbaldwin/vimtips](https://github.com/alexbaldwin
 * Load custom .vimrc, parse Plugins and custom maps
 * Expand data inside |pipes| and {motion}. ie: |inclusive| and {count}
 * Grab alphabet data from :help and https://github.com/alexbaldwin/vimtips/blob/gh-pages/index.html
+* Add what Type of command the Letter key is mapped to so that a help can open correct vim help url.
+  * ie: [h: M](http://vimdoc.sourceforge.net/htmldoc/motion.html#M) OR [h: M](http://vimhelp.appspot.com/motion.txt.html#F)
 

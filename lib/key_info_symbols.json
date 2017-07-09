@@ -2,166 +2,199 @@
   "~": {
     "title": "Tilde",
     "image": "/images/symbols/tilde.png",
+    "action": "command",
     "text": ""
   },
   "!": {
     "title": "Bang",
     "image": "/images/symbols/bang.png",
+    "action": "operator",
     "text": ""
   },
   "@": {
     "title": "At/Register",
     "image": "/images/symbols/at.png",
+    "action": "command",
     "text": ":let @q='_ctrl-r_ctrl-r_q (paste @q)<br>*modify*<br>' (closing quote) & _enter_<br><br>:g/pattern/d X (delete pattern and save to x register)"
   },
   "#": {
     "title": "Hash",
     "image": "/images/symbols/hash.png",
+    "action": "motion",
     "text": "Same as '*', but search backward."
   },
   "$": {
     "title": "Money",
     "image": "/images/symbols/money.png",
+    "action": "motion",
     "text": "To end of line"
   },
   "%": {
     "title": "Percent",
     "image": "/images/symbols/percent.png",
+    "action": "motion",
     "text": "Find the next item in this line after or under the cursor and jump to its match. |inclusive| motion."
   },
   "^": {
     "title": "Caret",
     "image": "/images/symbols/caret.png",
+    "action": "motion",
     "text": "Return to first non-blank character"
   },
   "&": {
     "title": "Ampersand",
     "image": "/images/symbols/ampersand.png",
+    "action": "command",
     "text": "Synonym for `:s` (repeat last substitute)<br>Note that the flags are not remembered, thus it might actually work differently.<br>You can use `:&&` to keep the flags."
   },
   "&amp;": {
     "title": "Ampersand",
     "image": "/images/symbols/ampersand.png",
+    "action": "motion",
     "text": "Synonym for `:s` (repeat last substitute)<br>Note that the flags are not remembered, thus it might actually work differently.<br>You can use `:&&` to keep the flags."
   },
   "*": {
     "title": "Asterisk",
     "image": "/images/symbols/42.png",
+    "action": "motion",
     "text": "Search forward for the [count]'th occurrence of the word nearest to the cursor"
   },
   "(": {
     "title": "Begin parenthesis",
     "image": "/images/symbols/begin_parenthesis.png",
+    "action": "motion",
     "text": "[count] sentences backward.  |exclusive| motion."
   },
   ")": {
     "title": "end_parenthesis",
     "image": "/images/symbols/end_parenthesis.png",
+    "action": "motion",
     "text": "[count] sentences forward.  |exclusive| motion."
   },
   "_": {
     "title": "Underscore",
     "image": "/images/symbols/underscore.png",
+    "action": "motion",
     "text": "[count] - 1 lines downward, on the first non-blank character |linewise|."
   },
   "+": {
     "title": "Plus",
     "image": "/images/symbols/plus.png",
+    "action": "motion",
     "text": "[count] lines downward, on the first non-blank character |linewise|."
   },
   "-": {
     "title": "Minus/Dash",
     "image": "/images/symbols/dash.png",
+    "action": "motion",
     "text": "[count] lines upward, on the first non-blank character |linewise|. <br>Plugin andrewRadev/switch to change true/false, etc"
   },
   "=": {
     "title": "Equal",
     "image": "/images/symbols/equal.png",
+    "action": "operator",
     "text": "Filter {motion} lines through the external program given with the 'equalprg' option.  When the 'equalprg' option is empty (this is the default), use the internal formatting function"
   },
   "`": {
     "title": "backtick",
     "image": "/images/symbols/backtick.png",
+    "action": "motion",
     "text": "Jump to the mark {a-z} in the current buffer."
   },
   "[": {
     "title": "Beginning Bracket",
     "image": "/images/symbols/begin_bracket.png",
+    "action": "motion",
     "text": "A lot of Vim power found here! check out :help ["
   },
   "]": {
     "title": "Ending Bracket",
     "image": "/images/symbols/end_bracket.png",
+    "action": "motion",
     "text": "A lot of Vim power found here! check out :help ]"
   },
   "{": {
     "title": "Begin Brace",
     "image": "/images/symbols/begin_brace.png",
+    "action": "motion",
     "text": "[count] paragraphs backward.  |exclusive| motion."
   },
   "}": {
     "title": "End Brace",
     "image": "/images/symbols/end_brace.png",
+    "action": "motion",
     "text": "[count] paragraphs forward.  |exclusive| motion."
   },
   "?": {
     "title": "Question Mark",
     "image": "/images/symbols/question_mark.png",
+    "action": "motion",
     "text": "Search backward for the [count]'th occurrence of the latest used pattern |last-pattern| with latest used |{offset}|."
   },
   "/": {
     "title": "Forward Slash",
     "image": "/images/symbols/forward_slash.png",
+    "action": "motion",
     "text": "Search forward for the [count]'th occurrence of the latest used pattern |last-pattern| with latest used |{offset}|."
   },
   "\\": {
     "title": "Back Slash",
     "image": "/images/symbols/back_slash.png",
+    "action": "extra",
     "text": "A backslash followed by a single character, with no special meaning, is reserved for future expansions"
   },
   "|": {
     "title": "Pipe",
     "image": "/images/symbols/pipe.png",
+    "action": "motion",
     "text": ""
   },
   ".": {
     "title": "dot",
     "image": "/images/symbols/dot.png",
+    "action": "command",
     "text": ""
   },
   ",": {
     "title": "Comma",
     "image": "/images/symbols/comma.png",
+    "action": "motion",
     "text": ""
   },
   "\"": {
     "title": "Double Quote",
     "image": "/images/symbols/double_quote.png",
+    "action": "extra",
     "text": ""
   },
   "'": {
     "title": "Single Quote",
     "image": "/images/symbols/single_quote.png",
+    "action": "motion",
     "text": "'< & '> start/end of visual selection<br> '[ & '] - start/end of last change or yank<br> '. - position of where last change was made<br> '^ - position of cursor when last Vim last left insert mode - This is how gi command works<br> '' - position before last jump (Super useful!). See :h ''"
   },
   ";": {
     "title": "Semicolon",
     "image": "/images/symbols/semicolon.png",
+    "action": "motion",
     "text": ""
   },
   ":": {
     "title": "Colon",
     "image": "/images/symbols/colon.png",
+    "action": "command",
     "text": ""
   },
   ">": {
     "title": "Greater than",
     "image": "/images/symbols/greater_than.png",
+    "action": "operator",
     "text": ""
   },
   "<": {
     "title": "Less than",
     "image": "/images/symbols/less_than.png",
+    "action": "operator",
     "text": ""
   }
 }

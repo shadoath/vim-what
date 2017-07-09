@@ -14,7 +14,9 @@
 		"scripts" : ["lib/jquery-2.0.3.min.js"]
 	},
 
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
 
   "icons": {
     "16": "images/vim-what16.png",

@@ -253,6 +253,7 @@ function loadInfo(key, shifted){
     loadTitle(key);
     loadImage(key, true);
     loadText(key);
+    loadHelp(key);
     $(".info-key").html(info);
   }else{
     $(".info-key").html("no Vim info yet");
@@ -299,6 +300,32 @@ function loadImage(key, append = false){
   }
 }
 
+function loadHelp(key){
+    if(typeof key_info[key]["action"] != 'undefined'){
+      console.log(key_info[key]["action"]);
+      var link = "";
+      info += "<br>";
+      switch(key_info[key]["action"]) {
+        link =
+        case "motion":
+          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          break;
+        case "command":
+          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          break;
+        case "operator":
+          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          break;
+        case "extra":
+          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+        break;
+      }
+      info += "<a href='"+link"' target='_blank'>Vim help</a>";
+    }
+    else{
+      info += key+"<br>";
+    }
+}
 function loadCombo(value) {
   console.log(value);
   //TODO load from mappings

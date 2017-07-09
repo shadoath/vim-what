@@ -2,51 +2,61 @@
   "0": {
     "title": "Number 0",
     "image": "/images/numbers/0.png",
+    "action": "motion",
     "text": "Go to beginning of line, Add 'nnoremap 0 ^' to return to first non-blank character"
   },
   "1": {
     "title": "Number 1",
     "image": "/images/numbers/1.png",
+    "action": "extra",
     "text": ""
   },
   "2": {
     "title": "Number 2",
     "image": "/images/numbers/2.png",
+    "action": "extra",
     "text": ""
   },
   "3": {
     "title": "Number 3",
     "image": "/images/numbers/3.png",
+    "action": "extra",
     "text": ""
   },
   "4": {
     "title": "Number 4",
     "image": "/images/numbers/4.png",
+    "action": "extra",
     "text": ""
   },
   "5": {
     "title": "Number 5",
     "image": "/images/numbers/5.png",
+    "action": "extra",
     "text": ""
   },
   "6": {
     "title": "Number 6",
     "image": "/images/numbers/6.png",
+    "action": "extra",
     "text": ""
   },
   "7": {
     "title": "Number 7",
     "image": "/images/numbers/7.png",
+    "action": "extra",
     "text": ""
   },
   "8": {
     "title": "Number 8",
     "image": "/images/numbers/8.png",
+    "action": "extra",
     "text": ""
   },
   "9": {
     "title": "Number 9",
     "image": "/images/numbers/9.png",
+    "action": "extra",
     "text": ""
   }
 }

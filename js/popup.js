@@ -18,6 +18,7 @@ var maps  = {
   "l": {},  // "l"	langmap |language-mapping|
 };
 var append = true;
+var vim_help = "http://vimhelp.appspot.com/"
 
 
 $(document).ready(function(){
@@ -300,25 +301,39 @@ function loadImage(key, append = false){
   }
 }
 
-function loadHelp(key){
+function loadAction(key){
     if(typeof key_info[key]["action"] != 'undefined'){
       console.log(key_info[key]["action"]);
       var link = "";
       info += "<br>";
       switch(key_info[key]["action"]) {
         case "motion":
-          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          link = "http://vimhelp.appspot.com/motion.txt.html#motion.txt";
           break;
         case "command":
-          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          link = "http://vimhelp.appspot.com/map.txt.html#%3Acommand";
           break;
         case "operator":
-          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          link = "http://vimhelp.appspot.com/motion.txt.html#operator";
           break;
         case "extra":
-          link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
+          link = "http://vimhelp.appspot.com";
         break;
       }
+      info += "<a href='"+link+"' target='_blank'>Vim help</a>";
+    }
+    else{
+      info += key+"<br>";
+    }
+}
+
+function loadHelp(key){
+    if(typeof key_info[key]["vimhelp"] != 'undefined'){
+      var help = key_info[key]["vimhelp"];
+      var link = "";
+      console.log(help);
+      info += "<br>";
+      link = "http://vimhelp.appspot.com/"+help;
       info += "<a href='"+link+"' target='_blank'>Vim help</a>";
     }
     else{

@@ -3,12 +3,14 @@
     "title": "lowercase",
     "image": "/images/letters/a.png",
     "action": "command",
+    "vimhelp": "insert.txt.html#a",
     "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
   },
   "A": {
     "title": "UPPERCASE",
     "image": "/images/letters/aa.png",
     "action": "command",
+    "vimhelp": "insert.txt.html#A",
     "text": "append at end of line"
   },
   "b": {

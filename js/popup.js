@@ -306,7 +306,6 @@ function loadHelp(key){
       var link = "";
       info += "<br>";
       switch(key_info[key]["action"]) {
-        link =
         case "motion":
           link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
           break;
@@ -320,7 +319,7 @@ function loadHelp(key){
           link = "http://vimhelp.appspot.com/motion.txt.html#"+key;
         break;
       }
-      info += "<a href='"+link"' target='_blank'>Vim help</a>";
+      info += "<a href='"+link+"' target='_blank'>Vim help</a>";
     }
     else{
       info += key+"<br>";

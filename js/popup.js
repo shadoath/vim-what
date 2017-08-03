@@ -8,18 +8,17 @@ var curLayout = "colemack";
 var curLesson = "11";
 var key_info  = {};
 var maps  = {
-  "n": {},  // "n"	Normal
-  "v": {},  // "v"	Visual (including Select)
-  "o": {},  // "o"	Operator-pending
-  "i": {},  // "i"	Insert
-  "c": {},  // "c"	Cmd-line
-  "s": {},  // "s"	Select
-  "x": {},  // "x"	Visual
-  "l": {},  // "l"	langmap |language-mapping|
+  "n": {},  // "n"  Normal
+  "v": {},  // "v"  Visual (including Select)
+  "o": {},  // "o"  Operator-pending
+  "i": {},  // "i"  Insert
+  "c": {},  // "c"  Cmd-line
+  "s": {},  // "s"  Select
+  "x": {},  // "x"  Visual
+  "l": {},  // "l"  langmap |language-mapping|
 };
 var append = true;
 var vim_help = "http://vimhelp.appspot.com/"
-
 
 $(document).ready(function(){
   $.getJSON("/lib/my_sorted_maps.json", function(json) {

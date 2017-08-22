@@ -1,18 +1,18 @@
 {
   "name": "Vim what?",
   "description": "Lookup of nifty vim commands",
-  "version": "0.5",
-	"manifest_version": 2,
+  "version": "0.6",
+  "manifest_version": 2,
 
   "browser_action": {
     "default_icon": "images/vim-what128.png",
     "default_popup": "popup.html",
-		"default_title": "Vim what?"
+    "default_title": "Vim what?"
   },
 
-	"background": {
-		"scripts" : ["lib/jquery-2.0.3.min.js"]
-	},
+  "background": {
+    "scripts" : ["lib/jquery-2.0.3.min.js"]
+  },
 
   "permissions": [
     "storage"

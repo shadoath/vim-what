@@ -185,6 +185,18 @@
     "action": "command",
     "text": ""
   },
+  "&gt;": {
+    "title": "Greater than",
+    "image": "/images/symbols/greater_than.png",
+    "action": "operator",
+    "text": ""
+  },
+  "&lt;": {
+    "title": "Less than",
+    "image": "/images/symbols/less_than.png",
+    "action": "operator",
+    "text": ""
+  },
   ">": {
     "title": "Greater than",
     "image": "/images/symbols/greater_than.png",

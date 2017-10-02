@@ -277,7 +277,7 @@ function loadTitle(key){
 
 function loadText(key){
   var text  = key_info[key]["text"]
-  var pipe  = new RegExp(/\|(.*)\|/gi);
+  var pipe  = new RegExp(/\|(.+?)\|/gi);
   var links = pipe.exec(text);
   if(links != null){
     links.shift();
@@ -334,9 +334,6 @@ function loadHelp(key){
       info += "<br>";
       link = "http://vimhelp.appspot.com/"+help;
       info += "<a href='"+link+"' target='_blank'>Vim help</a>";
-    }
-    else{
-      info += key+"<br>";
     }
 }
 function loadCombo(value) {

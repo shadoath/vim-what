@@ -65,7 +65,7 @@
     "title": "lowercase",
     "image": "/images/letters/f.png",
     "action": "motion",
-    "text": " f{char}<br>  To [count]'th occurrence of {char} to the right.<br>The cursor is placed on {char} |inclusive|.<br> {char} can be entered as a digraph |digraph-arg|.  When 'encoding' is set to Unicode, composing characters may be used, see |utf-8-char-arg|.  |:lmap| mappings apply to {char}.<br>The CTRL-^ command in Insert mode can be used to switch this on/off |i_CTRL-^|."
+    "text": " f{char}<br>  To [count]'th occurrence of {char} to the right.<br>The cursor is placed on {char} |inclusive|.<br> {char} can be entered as a digraph.  When 'encoding' is set to Unicode, composing characters may be used."
   },
   "F": {
     "title": "UPPERCASE",

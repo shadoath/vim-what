@@ -11,7 +11,7 @@
   },
 
   "background": {
-    "scripts" : ["lib/jquery-2.0.3.min.js"]
+    "scripts" : ["lib/jquery-2.0.3.min.js", "lib/jquery-ui-1.10.4.custom.min.js"]
   },
 
   "permissions": [

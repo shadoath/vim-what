@@ -149,7 +149,7 @@
     "title": "lowercase",
     "image": "/images/letters/m.png",
     "action": "command",
-    "text": "Set a Mark {a-zA-Z} to jump back to."
+    "text": "Set a Mark {a-zA-Z}. Use ' or ` to jump back to set mark {a-zA-Z}."
   },
   "M": {
     "title": "UPPERCASE",
@@ -173,13 +173,13 @@
     "title": "lowercase",
     "image": "/images/letters/o.png",
     "action": "command",
-    "text": "Start a new line below cursor position."
+    "text": "Start a new line <b>below</b> cursor position."
   },
   "O": {
     "title": "UPPERCASE",
     "image": "/images/letters/oo.png",
     "action": "command",
-    "text": "Start a new line above cursor position."
+    "text": "Start a new line <b>above</b> cursor position."
   },
   "p": {
     "title": "lowercase",

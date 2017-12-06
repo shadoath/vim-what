@@ -17,300 +17,350 @@
     "title": "lowercase",
     "image": "/images/letters/b.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#b",
     "text": "[count] words backward.  |exclusive| motion."
   },
   "B": {
     "title": "UPPERCASE",
     "image": "/images/letters/bb.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#B",
     "text": "[count] WORDS backward.  |exclusive| motion."
   },
   "c": {
     "title": "lowercase",
     "image": "/images/letters/c.png",
     "action": "operator",
+    "vimhelp": "change.txt.html#c",
     "text": "[\"x]c{motion}<br>Delete {motion}text [into register x] and start insert."
   },
   "C": {
     "title": "UPPERCASE",
     "image": "/images/letters/cc.png",
     "action": "command",
+    "vimhelp": "change.txt.html#C",
     "text": "[\"x]C<br>Delete from the cursor position to the end of the line and [count]-1 more lines [into register x], and start insert.<br>Synonym for c$ (not |linewise|)."
   },
   "d": {
     "title": "lowercase",
     "image": "/images/letters/d.png",
     "action": "operator",
+    "vimhelp": "change.txt.html#d",
     "text": "[\"x]d{motion}<br>Delete text that {motion} moves over [into register x]."
   },
   "D": {
     "title": "UPPERCASE",
     "image": "/images/letters/dd.png",
     "action": "command",
-    "text": "[\"x]D<br>Delete the characters under the cursor until the end of the line and [count]-1 more lines [into register x];<br>Synonym for \"d$\"."
+    "vimhelp": "change.txt.html#D",
+    "text": "[\"x]D<br>Delete the characters under the cursor until the end of the line and [count]-1 more lines [into register x];<br>Synonym for \"d$\" ."
   },
   "e": {
     "title": "lowercase",
     "image": "/images/letters/e.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#e",
     "text": "Forward to the end of word [count] |inclusive|.  Does not stop in an empty line."
   },
   "E": {
     "title": "UPPERCASE",
     "image": "/images/letters/ee.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#E",
     "text": "Forward to the end of WORD [count] |inclusive|.  Does not stop in an empty line."
   },
   "f": {
     "title": "lowercase",
     "image": "/images/letters/f.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#f",
     "text": " f{char}<br>  To [count]'th occurrence of {char} to the right.<br>The cursor is placed on {char} |inclusive|.<br> {char} can be entered as a digraph.  When 'encoding' is set to Unicode, composing characters may be used."
   },
   "F": {
     "title": "UPPERCASE",
     "image": "/images/letters/ff.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#F",
     "text": "F{char}<br>To the [count]'th occurrence of {char} to the left.<br> The cursor is placed on {char} |exclusive|.<br> {char} can be entered like with the |f| command."
   },
   "g": {
     "title": "lowercase",
     "image": "/images/letters/g.png",
     "action": "extra",
+    "vimhelp": "index.txt.html#g",
     "text": "A lot of Vim power found here! check out :help g"
   },
   "G": {
     "title": "UPPERCASE",
     "image": "/images/letters/gg.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#G",
     "text": "Goto line [count], default last line, on the first non-blank character |linewise|.<br> If 'startofline' not set, keep the same column.<br> G is a one of |jump-motions|."
   },
   "h": {
     "title": "lowercase",
     "image": "/images/letters/h.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#h",
     "text": "Move left"
   },
   "H": {
     "title": "UPPERCASE",
     "image": "/images/letters/hh.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#H",
     "text": "Move to top of current visable window."
   },
   "i": {
     "title": "lowercase",
     "image": "/images/letters/i.png",
     "action": "command",
+    "vimhelp": "insert.txt.html#i",
     "text": "Enter into insert mode from normal mode."
   },
   "I": {
     "title": "UPPERCASE",
     "image": "/images/letters/ii.png",
     "action": "command",
+    "vimhelp": "insert.txt.html#I",
     "text": "Enter into insert mode at the beginning of the line."
   },
   "j": {
     "title": "lowercase",
     "image": "/images/letters/j.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#j",
     "text": "Move down while in normal mode"
   },
   "J": {
     "title": "UPPERCASE",
     "image": "/images/letters/jj.png",
     "action": "command",
+    "vimhelp": "change.txt.html#J",
     "text": "Join next line to this line. Moves cursor to joined location"
   },
   "k": {
     "title": "lowercase",
     "image": "/images/letters/k.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#k",
     "text": "Move up."
   },
   "K": {
     "title": "UPPERCASE",
     "image": "/images/letters/kk.png",
     "action": "command",
+    "vimhelp": "various.txt.html#K",
     "text": "Pulls up :man or :help on current word."
   },
   "l": {
     "title": "lowercase",
     "image": "/images/letters/l.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#l",
     "text": "Move right."
   },
   "L": {
     "title": "UPPERCASE",
     "image": "/images/letters/ll.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#L",
     "text": "Move to to near bottom of current visable window."
   },
   "m": {
     "title": "lowercase",
     "image": "/images/letters/m.png",
     "action": "command",
+    "vimhelp": "motion.txt.html#m",
     "text": "Set a Mark {a-zA-Z}. Use ' or ` to jump back to set mark {a-zA-Z}."
   },
   "M": {
     "title": "UPPERCASE",
     "image": "/images/letters/mm.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#M",
     "text": "Move to the middle of the current visable window."
   },
   "n": {
     "title": "lowercase",
     "image": "/images/letters/n.png",
     "action": "motion",
+    "vimhelp": "pattern.txt.html#n",
     "text": "Move to next search item."
   },
   "N": {
     "title": "UPPERCASE",
     "image": "/images/letters/nn.png",
     "action": "motion",
+    "vimhelp": "pattern.txt.html#N",
     "text": "Move to next search item in reverse."
   },
   "o": {
     "title": "lowercase",
     "image": "/images/letters/o.png",
     "action": "command",
+    "vimhelp": "insert.txt.html#o",
     "text": "Start a new line <b>below</b> cursor position."
   },
   "O": {
     "title": "UPPERCASE",
     "image": "/images/letters/oo.png",
     "action": "command",
+    "vimhelp": "insert.txt.html#O",
     "text": "Start a new line <b>above</b> cursor position."
   },
   "p": {
     "title": "lowercase",
     "image": "/images/letters/p.png",
     "action": "command",
+    "vimhelp": "change.txt.html#p",
     "text": "Paste after cursor."
   },
   "P": {
     "title": "UPPERCASE",
     "image": "/images/letters/pp.png",
     "action": "command",
+    "vimhelp": "change.txt.html#P",
     "text": "Paste before cursor."
   },
   "q": {
     "title": "lowercase",
     "image": "/images/letters/q.png",
     "action": "command",
-    "text": "Start recording a macro. Use {a-z} for a fresh start or {A-Z} for appending.j"
+    "vimhelp": "repeat.txt.html#q",
+    "text": "Start recording a macro. Use {a-z} for a fresh start or {A-Z} for appending."
   },
   "Q": {
     "title": "UPPERCASE",
     "image": "/images/letters/qq.png",
     "action": "command",
+    "vimhelp": "intro.txt.html#Q",
     "text": "Enter into Ex mode where you can run commands like 21+21 and hit enter to get 42."
   },
   "r": {
     "title": "lowercase",
     "image": "/images/letters/r.png",
     "action": "command",
+    "vimhelp": "change.txt.html#r",
     "text": "Replace character under cursor with new character"
   },
   "R": {
     "title": "UPPERCASE",
     "image": "/images/letters/rr.png",
     "action": "command",
+    "vimhelp": "change.txt.html#R",
     "text": "Replace each character as you type. Backspace will revert until you exit replace mode"
   },
   "s": {
     "title": "lowercase",
     "image": "/images/letters/s.png",
     "action": "command",
+    "vimhelp": "change.txt.html#s",
     "text": "Delete character(s) under cursor and enters insert mode."
   },
   "S": {
     "title": "UPPERCASE",
     "image": "/images/letters/ss.png",
     "action": "command",
+    "vimhelp": "change.txt.html#S",
     "text": "Delete line(s) under cursor and enters insert mode."
   },
   "t": {
     "title": "lowercase",
     "image": "/images/letters/t.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#t",
     "text": "Move cursor to [count]'th occurance of character to the right."
   },
   "T": {
     "title": "UPPERCASE",
     "image": "/images/letters/tt.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#T",
     "text": "Move cursor to [count]'th occurance of character to the left."
   },
   "u": {
     "title": "lowercase",
     "image": "/images/letters/u.png",
     "action": "command",
+    "vimhelp": "undo.txt.html#u",
     "text": "Undo!"
   },
   "U": {
     "title": "UPPERCASE",
     "image": "/images/letters/uu.png",
     "action": "command",
+    "vimhelp": "undo.txt.html#U",
     "text": "Undo all changes on the line where the last change was made."
   },
   "v": {
     "title": "lowercase",
     "image": "/images/letters/v.png",
     "action": "command",
+    "vimhelp": "visual.txt.html#v",
     "text": "Enter Visual mode."
   },
   "V": {
     "title": "UPPERCASE",
     "image": "/images/letters/vv.png",
     "action": "command",
+    "vimhelp": "visual.txt.html#V",
     "text": "Enter Visual mode linewise"
   },
   "w": {
     "title": "lowercase",
     "image": "/images/letters/w.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#w",
     "text": "Move one word forward"
   },
   "W": {
     "title": "UPPERCASE",
     "image": "/images/letters/ww.png",
     "action": "motion",
+    "vimhelp": "motion.txt.html#W",
     "text": "Move one word backward"
   },
   "x": {
     "title": "lowercase",
     "image": "/images/letters/x.png",
     "action": "command",
+    "vimhelp": "change.txt.html#x",
     "text": "Delete character(s) under cursor and after."
   },
   "X": {
     "title": "UPPERCASE",
     "image": "/images/letters/xx.png",
     "action": "command",
+    "vimhelp": "change.txt.html#X",
     "text": "Delete character(s) under cursor and before."
   },
   "y": {
     "title": "lowercase",
     "image": "/images/letters/y.png",
     "action": "operator",
+    "vimhelp": "change.txt.html#y",
     "text": "Yank selected text"
   },
   "Y": {
     "title": "UPPERCASE",
     "image": "/images/letters/yy.png",
     "action": "command",
+    "vimhelp": "change.txt.html#Y",
     "text": "Yank current line."
   },
   "z": {
     "title": "lowercase",
     "image": "/images/letters/z.png",
     "action": "extra",
+    "vimhelp": "index.txt.html#z",
     "text": "Redraw window on cursor. z+ for top of window z- for bottom of window and z. for center."
   },
   "Z": {
     "title": "UPPERCASE",
     "image": "/images/letters/zz.png",
     "action": "extra",
+    "vimhelp": "starting.txt.html#-Z",
     "text": "Amazingly unmapped."
   }
 }

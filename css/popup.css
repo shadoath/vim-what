@@ -4,15 +4,20 @@ body {
   background-color:eee;
   margin: 0px;
 }
+p {
+  -webkit-margin-before: .5em;
+  -webkit-margin-after: .5em;
+}
 
+.keyboard-search-lession-container {
+  display: flex;
+  justify-content: space-between;
+
+}
 .layout-select {
   float: left;
   width: 20%;
   display: grid;
-}
-.map-mode-select{
-  float: left;
-  margin-left: 18%;
 }
 .mapping-select {
   float: left;
@@ -25,9 +30,9 @@ body {
   float: left;
   margin-top:5px auto;
   width:800px;
-  height:380px;
+  height:350px;
   background-color:#999;
-  border-radius:74px;
+  border-radius:50px;
 }
 
 .keyboard { border:10px; }

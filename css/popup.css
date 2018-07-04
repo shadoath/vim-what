@@ -27,25 +27,21 @@ p {
 }
 
 .keyboard-base{
-  float: left;
-  margin-top:5px auto;
   width:800px;
   height:312px;
   background-color:#999;
-  border-radius:50px;
 }
 
 .keyboard {
   border:10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    position: absolute;
-    top: -20;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 5px;
 }
 
 .keyboardRow {
-  position:relative;
+  /* position:relative; */
   text-align:center;
   top:50px;
 }

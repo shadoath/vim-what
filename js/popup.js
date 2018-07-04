@@ -108,7 +108,6 @@ function loadKeyboard(keyboard){
   $(layouts[keyboard]).each(function(layer, value){
     shifted++;
     nextLayer = keyboard+"-"+layer;
-    $("#"+keyboard).append("<div class='keyboardRow' id='"+nextLayer+"'>");
     if ((shifted % 2) == 1){
       $("#"+keyboard).append("<div class='keyboardRow shifted' id='"+nextLayer+"'>");
     }

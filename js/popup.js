@@ -155,38 +155,14 @@ function infoblocks(){
 }
 
 // Map lookup
-function mapSearch(map_query){
-  console.log("mapSearch");
-  console.log("map_query: "+map_query);
-
+function mapSearch(query){
+  console.log("query: "+query);
   info = "";
   $(".info-key").html("");
-  map_split = map_query.split('');
-  map_mode  = $("#map-mode-choice").find(":selected").val();
-  mode_name = $("#map-mode-choice").find(":selected").html();
-  my_sorted_maps = "undefined"
-  if(map_query == ""){
-    console.log("mapSearch EMPTY");
-    map_split = map_query.split('');
-    $(".info-key").append('<b>'+mode_name+": "+'</b>');
-    $.each( map_mode.split(''), function( i, mode) {
-      $(".info-key").append('<b>'+mode+" maps: "+'</b>');
-      $.each( maps[mode], function( key, value ) {
-        $(".info-key").append('<pre>'+key + ": " + value+'</pre>');
-      });
-    });
-    // $(".info-key").append('<b>'+mode_name+" maps: "+'</b>');
-    // $.each( maps[map_mode], function( key, value ) {
-    //   $(".info-key").append('<pre>'+key + ": " + value+'</pre>');
-    // });
-  }else{
-    if(map_mode == "nvo"){
-      my_sorted_maps  = "n maps: "+maps["n"][map_query]
-      my_sorted_maps += "<br>v maps: "+maps["v"][map_query]
-      my_sorted_maps += "<br>o maps: "+maps["o"][map_query]
-    }else{
-      my_sorted_maps = maps[map_mode][map_query]
-    }
+
+  chrome.storage.sync.get(null, function(data) {
+    console.log(data);
+    map_split = query.split('');
     for (i=0; i<map_split.length; i++){
       loadImage(map_split[i]);
     }
@@ -200,7 +176,7 @@ function mapSearch(map_query){
         $(".info-key").append("<br>No map found, use Shift + Enter to create.");
       }
     });
-  }
+  });
 }
 
 // Load map into editable window
@@ -265,13 +241,13 @@ function loadInfo(key, shifted){
 }
 
 function loadTitle(key){
-    if(typeof key_info[key]["title"] != 'undefined'){
-      console.log(key_info[key]["title"]);
-      info = "<p>"+key_info[key]["title"]+"</p>";
-    }
-    else{
-      info = key+"<br>";
-    }
+  if(typeof key_info[key]["title"] != 'undefined'){
+    console.log(key_info[key]["title"]);
+    info = "<p>"+key_info[key]["title"]+"</p>";
+  }
+  else{
+    info = key+"<br>";
+  }
 }
 
 function loadText(key){
@@ -300,40 +276,40 @@ function loadImage(key, append = false){
 }
 
 function loadAction(key){
-    if(typeof key_info[key]["action"] != 'undefined'){
-      console.log(key_info[key]["action"]);
-      var link = "";
-      info += "<br>";
-      switch(key_info[key]["action"]) {
-        case "motion":
-          link = "http://vimhelp.appspot.com/motion.txt.html#motion.txt";
-          break;
-        case "command":
-          link = "http://vimhelp.appspot.com/map.txt.html#%3Acommand";
-          break;
-        case "operator":
-          link = "http://vimhelp.appspot.com/motion.txt.html#operator";
-          break;
-        case "extra":
-          link = "http://vimhelp.appspot.com";
+  if(typeof key_info[key]["action"] != 'undefined'){
+    console.log(key_info[key]["action"]);
+    var link = "";
+    info += "<br>";
+    switch(key_info[key]["action"]) {
+      case "motion":
+        link = "http://vimhelp.appspot.com/motion.txt.html#motion.txt";
         break;
-      }
-      info += "<a href='"+link+"' target='_blank'>Vim help</a>";
+      case "command":
+        link = "http://vimhelp.appspot.com/map.txt.html#%3Acommand";
+        break;
+      case "operator":
+        link = "http://vimhelp.appspot.com/motion.txt.html#operator";
+        break;
+      case "extra":
+        link = "http://vimhelp.appspot.com";
+        break;
     }
-    else{
-      info += key+"<br>";
-    }
+    info += "<a href='"+link+"' target='_blank'>Vim help</a>";
+  }
+  else{
+    info += key+"<br>";
+  }
 }
 
 function loadHelp(key){
-    if(typeof key_info[key]["vimhelp"] != 'undefined'){
-      var help = key_info[key]["vimhelp"];
-      var link = "";
-      console.log(help);
-      info += "<br>";
-      link = "http://vimhelp.appspot.com/"+help;
-      info += "<a href='"+link+"' target='_blank'>Vim help</a>";
-    }
+  if(typeof key_info[key]["vimhelp"] != 'undefined'){
+    var help = key_info[key]["vimhelp"];
+    var link = "";
+    console.log(help);
+    info += "<br>";
+    link = "http://vimhelp.appspot.com/"+help;
+    info += "<a href='"+link+"' target='_blank'>Vim help</a>";
+  }
 }
 function loadCombo(value) {
   console.log(value);

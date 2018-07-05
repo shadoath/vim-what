@@ -27,23 +27,29 @@ p {
 }
 
 .keyboard-base{
-  float: left;
-  margin-top:5px auto;
   width:800px;
-  height:350px;
+  height:312px;
   background-color:#999;
-  border-radius:50px;
 }
 
-.keyboard { border:10px; }
+.keyboard {
+  border:10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 5px;
+}
 
 .keyboardRow {
-  position:relative;
+  /* position:relative; */
   text-align:center;
   top:50px;
 }
 .shifted {
-  margin-bottom: -11px;
+  /* margin-bottom: -11px; */
+}
+.keyboardRow.shifted .key{
+  margin-bottom: 0px;
 }
 
 .key {

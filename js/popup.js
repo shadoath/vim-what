@@ -69,7 +69,7 @@ $(document).ready(function(){
     if (typeof(data.curLesson) != "undefined") curLesson = data.curLesson;
     $("#layout-choice").val(curLayout);
     $("#lesson-choice").val(curLesson);
-    refresh(curLayout, curLesson);
+    setTimeout(function(){ refresh(curLayout, curLesson); }, 100);
   });
   $("#query").focus();
 });

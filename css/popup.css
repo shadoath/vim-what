@@ -4,9 +4,15 @@ body {
   background-color:eee;
   margin: 0px;
 }
+pre {
+  margin: .5rem 0;
+}
 p {
   -webkit-margin-before: .5em;
   -webkit-margin-after: .5em;
+}
+.plugin-content, .info-content{
+  display: block;
 }
 
 .keyboard-search-lession-container {
@@ -101,9 +107,6 @@ p {
 .info-key{
   width: 100%;
   float: left;
-}
-.info-key span{
-  margin-left: 2%;
 }
 .info-key p{
   font-weight:600;

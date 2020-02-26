@@ -77,7 +77,7 @@
     "text": "[count] sentences backward.  |exclusive| motion."
   },
   ")": {
-    "title": "end_parenthesis",
+    "title": "End parenthesis",
     "image": "/images/symbols/end_parenthesis.png",
     "action": "motion",
     "vimhelp": "motion.txt.html#%29",
@@ -102,7 +102,8 @@
     "image": "/images/symbols/dash.png",
     "action": "motion",
     "vimhelp": "motion.txt.html#-",
-    "text": "[count] lines upward, on the first non-blank character |linewise|. <br>Plugin andrewRadev/switch to change true/false, etc"
+    "plugins": "AndrewRadev/switch.vim | Change true/false, etc",
+    "text": "[count] lines upward, on the first non-blank character |linewise|."
   },
   "=": {
     "title": "Equal",

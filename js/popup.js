@@ -18,6 +18,7 @@ var maps  = {
   "l": {},  // "l"  langmap |language-mapping|
 };
 var append = true;
+var saving_map = false;
 var vim_help = "http://vimhelp.appspot.com/"
 
 $(document).ready(function(){
@@ -69,7 +70,7 @@ $(document).ready(function(){
     if (typeof(data.curLesson) != "undefined") curLesson = data.curLesson;
     $("#layout-choice").val(curLayout);
     $("#lesson-choice").val(curLesson);
-    refresh(curLayout, curLesson);
+    setTimeout(function(){ refresh(curLayout, curLesson); }, 100);
   });
   $("#query").focus();
 });
@@ -132,55 +133,62 @@ function infoblocks(){
   $(".key").on("click", function(event, key){
     loadInfo($(this).find("span")[0].innerHTML, event.shiftKey);
   });
+  saving_map = false;
 
-  $(document).on('keyup', function(event, key) {
-    console.log(event);
+}
+  $(window).on('keyup', function(event, key) {
+    // console.log(event);
     // console.log(event.key);
-    if(event.key == "Enter"){
-      map_query = $("#query")[0].value;
-      console.log(map_query);
-      $("#query")[0].value = "";
-      $("#query")[0].placeholder = map_query;
-      // $(".info-key").html("<span>"+map_query+"</span><br>");
-      if(event.shiftKey){
-        mapChange(map_query);
-      }else{
-        mapSearch(map_query);
+    if(!saving_map){
+      if(event.key == "Enter"){
+        map_query = $("#query")[0].value;
+        // console.log(map_query);
+        $("#query")[0].value = "";
+        $("#query")[0].placeholder = map_query;
+        // $(".info-key").html("<span>"+map_query+"</span><br>");
+        if(event.shiftKey){
+          mapChange(map_query);
+        }else{
+          mapSearch(map_query);
+        }
+      }
+      else if(event.key != "Shift"){
+        loadInfo(event.key, event.shiftKey);
       }
     }
-    else if(event.key != "Shift"){
-      loadInfo(event.key, event.shiftKey);
-    }
   });
-}
 
 // Map lookup
 function mapSearch(query){
-  console.log("query: "+query);
+  // console.log("query: "+query);
   info = "";
-  $(".info-key").html("");
-
-  chrome.storage.sync.get(null, function(data) {
-    console.log(data);
-    map_split = query.split('');
-    for (i=0; i<map_split.length; i++){
-      loadImage(map_split[i]);
-    }
-    $(".info-key").append(info);
-    chrome.storage.sync.get(map_query, function(data) {
-      if (typeof(data[map_query]) != "undefined"){
-        $(".info-key").append('<pre>'+data[map_query]+'</pre>');
-      }else if(my_sorted_maps != "undefined"){
-        $(".info-key").append('<pre>'+my_sorted_maps+'</pre>');
-      }else{
-        $(".info-key").append("<br>No map found, use Shift + Enter to create.");
+  if(query == ""){
+    $(".info-key").html("Create a new map with &lt;shift&gt;+Enter");
+  }else{
+    $(".info-key").html("");
+    chrome.storage.sync.get(null, function(data) {
+      // console.log(data);
+      map_split = query.split('');
+      for (i=0; i<map_split.length; i++){
+        loadImage(map_split[i]);
       }
+      $(".info-key").append(info);
+      chrome.storage.sync.get(map_query, function(data) {
+        if (typeof(data[map_query]) != "undefined"){
+          $(".info-key").append('<pre>'+data[map_query]+'</pre>');
+        }else if(my_sorted_maps != "undefined"){
+          $(".info-key").append('<pre>'+my_sorted_maps+'</pre>');
+        }else{
+          $(".info-key").append("<br>No map found, use Shift + Enter to create.");
+        }
+      });
     });
-  });
+  }
 }
 
 // Load map into editable window
 function mapChange(map_query){
+  saving_map = true;
   map_split = map_query.split('');
   map_mode  = $("#map-mode-choice").find(":selected").val();
   $(document).unbind("keyup");
@@ -219,7 +227,7 @@ function mapChange(map_query){
 }
 
 function loadInfo(key, shifted){
-  console.log(key);
+  // console.log(key);
   info = "";
   if(shifted == true){
     key = key.toUpperCase();
@@ -228,6 +236,7 @@ function loadInfo(key, shifted){
     loadTitle(key);
     loadImage(key, true);
     loadText(key);
+    loadPlugin(key);
     loadHelp(key);
     $(".info-key").html(info);
   }else{
@@ -235,14 +244,14 @@ function loadInfo(key, shifted){
     $(".info-key").append("<br><br>Contribute on: <a href='https://github.com/shadoath/vim-what' target='_blank'>GitHub</a>");
   }
   $(".link").on("click", function(){
-    console.log("LINK"+this.innerHTML);
+    // console.log("LINK"+this.innerHTML);
     loadInfo(this.innerHTML);
   });
 }
 
 function loadTitle(key){
   if(typeof key_info[key]["title"] != 'undefined'){
-    console.log(key_info[key]["title"]);
+    // console.log(key_info[key]["title"]);
     info = "<p>"+key_info[key]["title"]+"</p>";
   }
   else{
@@ -277,7 +286,7 @@ function loadImage(key, append = false){
 
 function loadAction(key){
   if(typeof key_info[key]["action"] != 'undefined'){
-    console.log(key_info[key]["action"]);
+    // console.log(key_info[key]["action"]);
     var link = "";
     info += "<br>";
     switch(key_info[key]["action"]) {
@@ -305,10 +314,25 @@ function loadHelp(key){
   if(typeof key_info[key]["vimhelp"] != 'undefined'){
     var help = key_info[key]["vimhelp"];
     var link = "";
-    console.log(help);
-    info += "<br>";
+    // console.log(help);
+    info += "<span class='info-content'>";
     link = "http://vimhelp.appspot.com/"+help;
     info += "<a href='"+link+"' target='_blank'>Vim help</a>";
+    info += "</span>";
+  }
+}
+
+function loadPlugin(key){
+  if(typeof key_info[key]["plugins"] != 'undefined'){
+    var plugins = key_info[key]["plugins"].split(" || ");
+    $(plugins).each(function(key, plugin){
+      // console.log(plugin);
+      plugin = plugin.split(" | ");
+      info += "<span class='plugin-content'>";
+      info += "<b>Plugin:</b> <a href='https://github.com/" + plugin[0]  + "' target='_blank'>" + plugin[0]  + "</a>";
+      info += "</span>";
+      info += "<pre>" + plugin[1] + "</pre>";
+    });
   }
 }
 function loadCombo(value) {

@@ -102,7 +102,7 @@
     "image": "/images/symbols/dash.png",
     "action": "motion",
     "vimhelp": "motion.txt.html#-",
-    "plugins": "andrewRadev/switch | Change true/false, etc",
+    "plugins": "AndrewRadev/switch.vim | Change true/false, etc",
     "text": "[count] lines upward, on the first non-blank character |linewise|."
   },
   "=": {

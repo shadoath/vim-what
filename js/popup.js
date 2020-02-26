@@ -228,6 +228,7 @@ function loadInfo(key, shifted){
     loadTitle(key);
     loadImage(key, true);
     loadText(key);
+    loadPlugin(key);
     loadHelp(key);
     $(".info-key").html(info);
   }else{
@@ -306,9 +307,24 @@ function loadHelp(key){
     var help = key_info[key]["vimhelp"];
     var link = "";
     console.log(help);
-    info += "<br>";
+    info += "<span class='info-content'>";
     link = "http://vimhelp.appspot.com/"+help;
     info += "<a href='"+link+"' target='_blank'>Vim help</a>";
+    info += "</span>";
+  }
+}
+
+function loadPlugin(key){
+  if(typeof key_info[key]["plugins"] != 'undefined'){
+    var plugins = key_info[key]["plugins"].split(" || ");
+    $(plugins).each(function(key, plugin){
+      console.log(plugin);
+      plugin = plugin.split(" | ");
+      info += "<span class='plugin-content'>";
+      info += "<b>Plugin:</b> <a href='https://github.com/" + plugin[0]  + "' target='_blank'>" + plugin[0]  + "</a>";
+      info += "</span>";
+      info += "<pre>" + plugin[1] + "</pre>";
+    });
   }
 }
 function loadCombo(value) {

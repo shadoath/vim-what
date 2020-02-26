@@ -4,6 +4,7 @@
     "image": "/images/letters/a.png",
     "action": "command",
     "vimhelp": "insert.txt.html#a",
+    "plugins": "tpope/vim-speeddating | Use CTRL-a/CTRL-x to increment dates, times, and more.",
     "text": "insert after cursor<br>{command} around {selector}<br>ctrl-a: ++"
   },
   "A": {
@@ -312,6 +313,7 @@
     "image": "/images/letters/w.png",
     "action": "motion",
     "vimhelp": "motion.txt.html#w",
+    "plugins": "wesQ3/vim-windowswap | Buffer swapping `&lt;leader&gt;ww` on each buffer to swap positions",
     "text": "Move one word forward"
   },
   "W": {
@@ -326,6 +328,7 @@
     "image": "/images/letters/x.png",
     "action": "command",
     "vimhelp": "change.txt.html#x",
+    "plugins": "tpope/vim-speeddating | Use CTRL-a/CTRL-x to increment dates, times, and more.",
     "text": "Delete character(s) under cursor and after."
   },
   "X": {

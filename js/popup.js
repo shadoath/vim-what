@@ -67,7 +67,7 @@ function refresh(layout, lesson) {
     $('.info-key').html("<img src='/images/about/all.png'>")
   } else {
     loadLesson(parseInt(lesson))
-    $('.info-key').html("<img src='/images/about/lesson_" + lesson + ".png'>")
+    $('.info-key').html(`<img src='/images/about/lesson_${lesson}.png'>`)
   }
   saveChanges()
 }
@@ -92,7 +92,7 @@ function loadLesson(lesson) {
 
 function loadKeyboard(keyboard) {
   layer = ''
-  $('.keyboard-base').html("<div class='keyboard' id='" + keyboard + "'>")
+  $('.keyboard-base').html(`<div class='keyboard' id='${keyboard}'>`)
 
   shifted = 0
   $(layouts[keyboard]).each(function (layer, value) {
@@ -100,12 +100,10 @@ function loadKeyboard(keyboard) {
     nextLayer = keyboard + '-' + layer
     if (shifted % 2 == 1) {
       $('#' + keyboard).append(
-        "<div class='keyboardRow shifted' id='" + nextLayer + "'>"
+        `<div class='keyboardRow shifted' id='${nextLayer}'>`
       )
     } else {
-      $('#' + keyboard).append(
-        "<div class='keyboardRow' id='" + nextLayer + "'>"
-      )
+      $('#' + keyboard).append(`<div class='keyboardRow' id='${nextLayer}'>`)
     }
     $(value.split('')).each(function (i, k) {
       keyInfo = "<div class='key' id='" + k + "'>"
@@ -115,7 +113,7 @@ function loadKeyboard(keyboard) {
       ) {
         keyInfo += "<img src='" + key_info[k]['image'] + "'>"
       }
-      keyInfo += "<span class='key-value'>" + k + '</span>'
+      keyInfo += `<span class='key-value'>${k}</span>`
       keyInfo += '</div>'
       $('#' + nextLayer).append(keyInfo)
     })
@@ -167,7 +165,7 @@ function mapSearch(query) {
     $('.info-key').append(info)
     chrome.storage.sync.get(map_query, function (data) {
       if (typeof data[map_query] != 'undefined') {
-        $('.info-key').append('<pre>' + data[map_query] + '</pre>')
+        $('.info-key').append(`<pre>${data[map_query]}</pre>`)
       } else {
         $('.info-key').append('<br>No map found, use Shift + Enter to create.')
       }
@@ -198,7 +196,7 @@ function mapChange(map_query) {
   $('#save-map').on('click', function () {
     newMapValue = $('#update-map').val()
     chrome.storage.sync.set({ [map_query]: newMapValue }, function () {
-      $('.info-key').html(map_query + ' saved to:<br>' + newMapValue)
+      $('.info-key').html(`${map_query} saved to:<br>${newMapValue}`)
       debugLog('Saved-map: ' + map_query + ': ' + newMapValue)
     })
     infoblocks()
@@ -210,7 +208,7 @@ function mapChange(map_query) {
   $('#delete-map').on('click', function () {
     chrome.storage.sync.remove([map_query], function () {
       $('.info-key').html(
-        '<span>' + map_query + "</span><br><span class='red'>DELETED</span>"
+        `<span>${map_query}</span><br><span class='red'>DELETED</span>`
       )
       debugLog('Deleted map: ' + map_query)
     })

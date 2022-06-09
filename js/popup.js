@@ -17,6 +17,7 @@ var maps = {
   x: {}, // "x"  Visual
   l: {}, // "l"  langmap |language-mapping|
 }
+var debug = true
 var append = true
 var saving_map = false
 var vim_help = 'http://vimhelp.appspot.com/'
@@ -130,12 +131,11 @@ function infoblocks() {
   saving_map = false
 }
 $(window).on('keyup', function (event, key) {
-  // console.log(event);
-  // console.log(event.key);
+  debugLog({ event, key })
   if (!saving_map) {
     if (event.key == 'Enter') {
       map_query = $('#query')[0].value
-      // console.log(map_query);
+      debugLog({ map_query })
       $('#query')[0].value = ''
       $('#query')[0].placeholder = map_query
       // $(".info-key").html("<span>"+map_query+"</span><br>");
@@ -152,30 +152,25 @@ $(window).on('keyup', function (event, key) {
 
 // Map lookup
 function mapSearch(query) {
-  // console.log("query: "+query);
+  debugLog('mapSearch')
+  debugLog({ query })
   info = ''
   if (query == '') {
     $('.info-key').html('Create a new map with &lt;shift&gt;+Enter')
   } else {
     $('.info-key').html('')
-    chrome.storage.sync.get(null, function (data) {
-      // console.log(data);
-      map_split = query.split('')
-      for (i = 0; i < map_split.length; i++) {
-        loadImage(map_split[i])
+    // debugLog((data);
+    map_split = query.split('')
+    for (i = 0; i < map_split.length; i++) {
+      loadImage(map_split[i])
+    }
+    $('.info-key').append(info)
+    chrome.storage.sync.get(map_query, function (data) {
+      if (typeof data[map_query] != 'undefined') {
+        $('.info-key').append('<pre>' + data[map_query] + '</pre>')
+      } else {
+        $('.info-key').append('<br>No map found, use Shift + Enter to create.')
       }
-      $('.info-key').append(info)
-      chrome.storage.sync.get(map_query, function (data) {
-        if (typeof data[map_query] != 'undefined') {
-          $('.info-key').append('<pre>' + data[map_query] + '</pre>')
-        } else if (my_sorted_maps != 'undefined') {
-          $('.info-key').append('<pre>' + my_sorted_maps + '</pre>')
-        } else {
-          $('.info-key').append(
-            '<br>No map found, use Shift + Enter to create.'
-          )
-        }
-      })
     })
   }
 }
@@ -204,7 +199,7 @@ function mapChange(map_query) {
     newMapValue = $('#update-map').val()
     chrome.storage.sync.set({ [map_query]: newMapValue }, function () {
       $('.info-key').html(map_query + ' saved to:<br>' + newMapValue)
-      console.log('Saved')
+      debugLog('Saved-map: ' + map_query + ': ' + newMapValue)
     })
     infoblocks()
   })
@@ -217,14 +212,14 @@ function mapChange(map_query) {
       $('.info-key').html(
         '<span>' + map_query + "</span><br><span class='red'>DELETED</span>"
       )
-      console.log('Deleted map')
+      debugLog('Deleted map: ' + map_query)
     })
     infoblocks()
   })
 }
 
 function loadInfo(key, shifted) {
-  // console.log(key);
+  debugLog({ key, shifted })
   info = ''
   if (shifted == true) {
     key = key.toUpperCase()
@@ -243,14 +238,14 @@ function loadInfo(key, shifted) {
     )
   }
   $('.link').on('click', function () {
-    // console.log("LINK"+this.innerHTML);
+    debugLog('LINK' + this.innerHTML)
     loadInfo(this.innerHTML)
   })
 }
 
 function loadTitle(key) {
   if (typeof key_info[key]['title'] != 'undefined') {
-    // console.log(key_info[key]["title"]);
+    debugLog(key_info[key]['title'])
     info = '<p>' + key_info[key]['title'] + '</p>'
   } else {
     info = key + '<br>'
@@ -287,7 +282,7 @@ function loadImage(key, append = false) {
 
 function loadAction(key) {
   if (typeof key_info[key]['action'] != 'undefined') {
-    // console.log(key_info[key]["action"]);
+    debugLog(key_info[key]['action'])
     var link = ''
     info += '<br>'
     switch (key_info[key]['action']) {
@@ -314,7 +309,7 @@ function loadHelp(key) {
   if (typeof key_info[key]['vimhelp'] != 'undefined') {
     var help = key_info[key]['vimhelp']
     var link = ''
-    // console.log(help);
+    debugLog(help)
     info += "<span class='info-content'>"
     link = 'http://vimhelp.appspot.com/' + help
     info += "<a href='" + link + "' target='_blank'>Vim help</a>"
@@ -326,7 +321,7 @@ function loadPlugin(key) {
   if (typeof key_info[key]['plugins'] != 'undefined') {
     var plugins = key_info[key]['plugins'].split(' || ')
     $(plugins).each(function (key, plugin) {
-      // console.log(plugin);
+      // debugLog(plugin);
       plugin = plugin.split(' | ')
       info += "<span class='plugin-content'>"
       info +=
@@ -341,7 +336,7 @@ function loadPlugin(key) {
   }
 }
 function loadCombo(value) {
-  console.log(value)
+  debugLog(value)
   //TODO load from mappings
 }
 
@@ -349,7 +344,13 @@ function saveChanges() {
   chrome.storage.sync.set(
     { curLayout: curLayout, curLesson: curLesson },
     function () {
-      console.log('Saved layout/lesson')
+      debugLog('Saved layout/lesson')
     }
   )
+}
+
+function debugLog(message) {
+  if (debug) {
+    console.log(message)
+  }
 }

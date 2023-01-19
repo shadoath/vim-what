@@ -1,8 +1,9 @@
 {
   "name": "Vim what?",
   "description": "Lookup of nifty vim commands",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "manifest_version": 3,
+  "options_page": "options.html",
 
   "action": {
     "default_icon": "images/vim-what128.png",

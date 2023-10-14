@@ -1,6 +1,6 @@
 # Vim...what?
 
-Learn and remember Vim commands
+Learn and remember Vim commands via a [Chrome Extension](https://chrome.google.com/webstore/detail/vim-what/ngbehgnlcdjkbnihgpkgdangbhemidge)
 
 Current Plugin mappings based on shadoath's [dot_files](https://github.com/shadoath/dot_files)
 Colemack layout based on [Infinity Ergodox's](https://input.club/devices/infinity-ergodox/) keyboard with [custom Layout](https://github.com/shadoath/dot_files/tree/master/ergoDoxs%20keyboard)
